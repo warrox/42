@@ -1,24 +1,5 @@
 #include "philo_lib.h"
-
-
-int	ft_atoi(const char *nbr)
-{
-	long	result;
-	long	sign;
-
-	sign = 1;
-	result = 0;
-	while (*nbr && (*nbr == ' ' || (*nbr >= 9 && *nbr <= 13)))
-		++nbr;
-	if (*nbr && (*nbr == '-' || *nbr == '+'))
-	{
-		if (*nbr++ == '-')
-			sign *= -1;
-	}
-	while (*nbr && (*nbr >= '0' && *nbr <= '9'))
-		result = (*nbr++ - '0') + result * 10;
-	return (result * sign);
-}
+#include <stdio.h>
 
 void ft_check_param(char *input, int i, t_data *data)
 {
@@ -26,7 +7,9 @@ void ft_check_param(char *input, int i, t_data *data)
 	//[number_of_times_each_philosopher_must_eat]
 	if(i == 1)// check
 	{
-		 data->philo_nbr = ft_atoi(input);	
+		printf("GOIN\n"); 
+		data->philo_nbr = ft_atoi(input);
+		printf("NBR of philo : %d \n", data->philo_nbr);
 	}
 	if(i == 2)
 	{
@@ -52,6 +35,8 @@ void ft_parser(char **input, t_data *data)
 	i = 0;
 	while(input[i])
 	{
+		printf("XXX\n");
 		ft_check_param(input[i], i,data);
+		i++;
 	}	
 }
