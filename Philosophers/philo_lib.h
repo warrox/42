@@ -18,6 +18,7 @@ typedef struct s_data
 	pthread_mutex_t philo;
 	int i;
 	int philo_nbr;
+	int *arrayofphilo;
 	int time_die;
 	int time_eat;
 	int time_sleep;
