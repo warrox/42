@@ -15,7 +15,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	pthread_mutex_t philo;
+	pthread_t *philo;
 	int i;
 	int philo_nbr;
 	int *arrayofphilo;

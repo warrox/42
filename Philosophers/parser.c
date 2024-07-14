@@ -8,13 +8,13 @@ void add_philo_to_array(t_data *data)
 	if(!data->arrayofphilo)
 		return;
 	
-	printf("philo nbr : %d\n", data->philo_nbr);
+	// printf("philo nbr : %d\n", data->philo_nbr);
 	while(i++ <= data->philo_nbr)
 	{
 		printf("goin\n");
 		data->arrayofphilo[i] = i;
 	}
-	printf("PHILOARRAY[0] : %d\n", data->arrayofphilo[5]);
+	// printf("PHILOARRAY[0] : %d\n", data->arrayofphilo[5]);
 }
 
 void ft_check_param(char *input, int i, t_data *data)

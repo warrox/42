@@ -20,6 +20,7 @@ void display_state(t_data *data)
 }
 void display_all_data(t_data *data)
 {
+	int i = 0;
 	printf("--------------------\n");
 	printf("%d has taken a fork\n", data->philo_nbr);
 	printf("%d is eating\n", data->philo_nbr);
