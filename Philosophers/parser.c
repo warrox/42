@@ -11,7 +11,6 @@ void add_philo_to_array(t_data *data)
 	// printf("philo nbr : %d\n", data->philo_nbr);
 	while(i++ <= data->philo_nbr)
 	{
-		printf("goin\n");
 		data->arrayofphilo[i] = i;
 	}
 	// printf("PHILOARRAY[0] : %d\n", data->arrayofphilo[5]);
