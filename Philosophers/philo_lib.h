@@ -11,6 +11,7 @@
 typedef struct s_philo
 {
     pthread_mutex_t fork;
+	pthread_mutex_t write;
     int last_meal;
     int last_sleep;
     bool is_eating;

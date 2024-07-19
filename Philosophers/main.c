@@ -3,19 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void *philo_eat_thread(void *arg)
+void ft_takefork(t_data *data, int i)
 {
-    t_philo *philo = (t_philo *)arg;
+	while(data->time_eat)
+	{
+		pthread_mutex_lock(&data->philos->fork);
+		pthread_mutex_lock(&data->philos->write);
+		printf("[🍴] %d has taken a fork\n",i);	
+		pthread_mutex_unlock(&data->philos->fork);
+		pthread_mutex_unlock(&data->philos->write);
+		data->time_eat--;
+	}
+}
 
-    printf("GOIN\n");
+void *ft_routine(t_data *data,int i)
+{
 
-    while (1) // Simulating the philosopher eating indefinitely for demonstration purposes
+    while (1)
     {
-        pthread_mutex_lock(&philo->fork);
-        printf("Philosopher is eating...\n");
+        ft_takefork(data, i);
         sleep(1); // Simulate eating time
-        pthread_mutex_unlock(&philo->fork);
-        printf("Philosopher is thinking...\n");
+        printf("Philosopher is thinking[🤔]...\n");
         sleep(1); // Simulate thinking time
     }
 
@@ -31,7 +39,6 @@ int start_simulation(t_data *data)
     if (!data->philos)
         return -1;
 
-    // Initialize mutexes and philosopher data
     for (i = 0; i < data->philo_nbr; i++)
     {
         if (pthread_mutex_init(&data->philos[i].fork, NULL) != 0)
@@ -41,17 +48,15 @@ int start_simulation(t_data *data)
         }
     }
 
-    // Create philosopher threads
     for (i = 0; i < data->philo_nbr; i++)
     {
-        if (pthread_create(&philo_threads[i], NULL, philo_eat_thread, (void *)&data->philos[i]) != 0)
+        if (pthread_create(&philo_threads[i], NULL, ft_routine(data,i), (void *)&data->philos[i]) != 0)
         {
             printf("Error creating thread %d\n", i);
             return -1;
         }
     }
 
-    // Join philosopher threads
     for (i = 0; i < data->philo_nbr; i++)
     {
         if (pthread_join(philo_threads[i], NULL) != 0)
@@ -61,14 +66,13 @@ int start_simulation(t_data *data)
         }
     }
 
-    // Destroy mutexes
     for (i = 0; i < data->philo_nbr; i++)
     {
         pthread_mutex_destroy(&data->philos[i].fork);
     }
 
     free(data->philos);
-    return 0;
+    return (0);
 }
 
 int main(int argc, char **argv)
@@ -85,5 +89,5 @@ int main(int argc, char **argv)
     ft_parser(argv, &data);
     start_simulation(&data);
 
-    return 0;
+    return (0);
 }
