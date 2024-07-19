@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <stdbool.h>
 
+struct s_data;
+
 typedef struct s_philo
 {
     pthread_mutex_t fork;
@@ -15,6 +17,8 @@ typedef struct s_philo
     int last_meal;
     int last_sleep;
     bool is_eating;
+	int id;
+	struct s_data *data;
 } t_philo;
 
 typedef struct s_data
@@ -26,6 +30,7 @@ typedef struct s_data
     int time_eat;
     int time_sleep;
     int eat_cycle;
+	pthread_mutex_t write_mutex;
 } t_data;
 
 void ft_parser(char **input, t_data *data);

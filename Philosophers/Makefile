@@ -70,6 +70,10 @@ clean:
 	@echo "\033[1;31mCleaning up object files and the executable...\033[0m"
 	rm -f $(OBJ) $(EXEC)
 	@echo "\033[1;32mClean complete!\033[0m"
+fclean:
+	@echo "\033[1;31mCleaning up object files and the executable...\033[0m"
+	rm -f $(OBJ) $(EXEC)
+	@echo "\033[1;32mClean complete!\033[0m"
 
 # Phony targets
 .PHONY: all clean

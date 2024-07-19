@@ -4,16 +4,17 @@
 void add_philo_to_array(t_data *data)
 {
 	int i = 0;
+	int j = 1;
 	data->arrayofphilo = malloc(sizeof(int) * data->philo_nbr);
 	if(!data->arrayofphilo)
 		return;
 	
-	// printf("philo nbr : %d\n", data->philo_nbr);
-	while(i++ <= data->philo_nbr)
+	while(i < data->philo_nbr)
 	{
-		data->arrayofphilo[i] = i;
+		data->arrayofphilo[i] = j;
+		j++;
+		i++;
 	}
-	// printf("PHILOARRAY[0] : %d\n", data->arrayofphilo[5]);
 }
 
 void ft_check_param(char *input, int i, t_data *data)
