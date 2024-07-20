@@ -30,6 +30,7 @@ typedef struct s_data
     int time_eat;
     int time_sleep;
     int eat_cycle;
+	long ms;
 	pthread_mutex_t write_mutex;
 } t_data;
 

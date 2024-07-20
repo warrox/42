@@ -6,24 +6,37 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/20 14:17:35 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/20 16:04:24 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
+
+void ft_time(t_data *data)
+{
+	(void)data; 
+	struct timeval *tv = NULL;
+	struct timezone *tz = NULL;
+	tv = malloc(sizeof(struct timeval));
+	if(!tv)
+		return;
+	data->ms = 0;
+	gettimeofday(tv, tz);
+	data->ms = tv->tv_usec;
+}
+
 void ft_eat(t_data *data,int i)
 {
 	int t_e;
 	t_e = data->time_eat;
+	t_e = t_e * 1000;
 	while(t_e)
 	{
 		pthread_mutex_lock(&data->write_mutex);
-		printf("timestamp_in_ms %d is eating[🍝]\n", i);
+		ft_time(data);
+		printf("%ld %d is eating[🍝]\n",data->ms, i);
 		pthread_mutex_unlock(&data->write_mutex);
+		sleep(1);//pas bon
 		t_e --;	
 	}
 }
@@ -38,7 +51,8 @@ bool ft_takefork(t_data *data, int i)
 	else {
 		return(false);
 	}
-	printf("[🍴] %d has taken a fork\n",i);
+	ft_time(data);
+	printf("%ld %d has taken a fork[🍴]\n",data->ms,i);
 	return(true);
 }
 
@@ -118,19 +132,6 @@ int start_simulation(t_data *data)
     free(data->philos);
 	free(data->arrayofphilo);
     return (0);
-}
-void ft_time(t_data *data)
-{
-	(void)data; 
-	struct timeval *tv = NULL;
-	struct timezone *tz = NULL;
-	tv = malloc(sizeof(struct timeval));
-	if(!tv)
-		return;
-	long ms;
-	gettimeofday(tv, tz);
-	ms = tv->tv_usec;
-	printf("MS  : %ld\n",ms);
 }
 int main(int argc, char **argv)
 {
