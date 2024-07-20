@@ -1,13 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
+/*   Updated: 2024/07/20 14:17:35 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_lib.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-void ft_takefork(t_data *data, int i)
+#include <sys/time.h>
+void ft_eat(t_data *data,int i)
 {
-	pthread_mutex_lock(&data->philos->fork);
-	// pthread_mutex_lock(&data->philos->write);
-	printf("[🍴] %d has taken a fork\n",i);	
+	int t_e;
+	t_e = data->time_eat;
+	while(t_e)
+	{
+		pthread_mutex_lock(&data->write_mutex);
+		printf("timestamp_in_ms %d is eating[🍝]\n", i);
+		pthread_mutex_unlock(&data->write_mutex);
+		t_e --;	
+	}
+}
+
+bool ft_takefork(t_data *data, int i)
+{
+	if(data->philo_nbr % 2 == 0)
+	{
+		pthread_mutex_lock(&data->philos[i].fork);
+		pthread_mutex_lock(&data->philos[i+ 1].fork);
+	}
+	else {
+		return(false);
+	}
+	printf("[🍴] %d has taken a fork\n",i);
+	return(true);
 }
 
 void *ft_routine(void *arg)
@@ -21,8 +53,10 @@ void *ft_routine(void *arg)
             return((void*)-1);
         }
 
-	ft_takefork(data, i);
-	pthread_mutex_unlock(&data->philos->fork);
+	if(ft_takefork(data, i) == true)
+		ft_eat(data,i);
+	pthread_mutex_unlock(&data->philos[i].fork);
+	pthread_mutex_unlock(&data->philos[i + 1].fork);
 	pthread_mutex_lock(&data->write_mutex);
 	sleep(1); // Simulate eating time
 	printf("Philosopher is thinking[🤔]...\n");
@@ -35,13 +69,14 @@ void *ft_routine(void *arg)
 int start_simulation(t_data *data)
 {
     int i;
+	i = 0;
     pthread_t philo_threads[data->philo_nbr];
     data->philos = malloc(sizeof(t_philo) * data->philo_nbr);
 
     if (!data->philos)
         return (-1);
 
-    for (i = 0; i < data->philo_nbr; i++)
+    while (i < data->philo_nbr)
     {
         data->philos[i].id  = i+1;
 		data->philos[i].data = data;
@@ -50,36 +85,53 @@ int start_simulation(t_data *data)
             printf("Mutex initialization failed for philosopher %d\n", i);
             return (-1);
         }
+		i++;
     }
-
-    for (i = 0; i < data->philo_nbr; i++)
+	i = 0;
+    while (i < data->philo_nbr)
     {
         if (pthread_create(&philo_threads[i], NULL, ft_routine, (void *)&data->philos[i]) != 0)
         {
             printf("Error creating thread %d\n", i);
             return (-1);
         }
+		i++;
     }
 
-    for (i = 0; i < data->philo_nbr; i++)
+    i = 0;
+	while (i < data->philo_nbr)
     {
         if (pthread_join(philo_threads[i], NULL) != 0)
         {
             printf("Error joining thread %d\n", i);
             return (-1);
         }
+		i++;
     }
-
-    for (i = 0; i < data->philo_nbr; i++)
+	i = 0;
+    while(i < data->philo_nbr)
     {
         pthread_mutex_destroy(&data->philos[i].fork);
+		i++;
     }
 
     free(data->philos);
 	free(data->arrayofphilo);
     return (0);
 }
-
+void ft_time(t_data *data)
+{
+	(void)data; 
+	struct timeval *tv = NULL;
+	struct timezone *tz = NULL;
+	tv = malloc(sizeof(struct timeval));
+	if(!tv)
+		return;
+	long ms;
+	gettimeofday(tv, tz);
+	ms = tv->tv_usec;
+	printf("MS  : %ld\n",ms);
+}
 int main(int argc, char **argv)
 {
     t_data data;
@@ -92,6 +144,7 @@ int main(int argc, char **argv)
     }
 
     ft_parser(argv, &data);
+	ft_time(&data);
     start_simulation(&data);
 
     return (0);

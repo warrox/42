@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdbool.h>
-
+#include <sys/time.h>
 struct s_data;
 
 typedef struct s_philo
