@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 # Source files
-SRC = main.c parser.c parser_util.c
+SRC = main.c parser.c parser_util.c philo_util.c
 
 # Object files
 OBJ = $(SRC:.c=.o)
@@ -28,7 +28,7 @@ all:
 	@echo " | __     __   ____   ___ ||  ____    ____     _  __  |"
 	@echo " ||  |__ |--|_| || |_|   |||_|**|*|__|+|+||___| ||  | |"
 	@echo " ||==|^^||--| |=||=| |=*=||| |~~|~|  |=|=|| | |~||==| |"
-	@echo " ||  |##||  | | || | |JRO|||-|  | |==|+|+||-|-|~||__| |"
+	@echo " ||  |##||  | | || | |WHA|||-|  | |==|+|+||-|-|~||__| |"
 	@echo " ||__|__||__|_|_||_|_|___|||_|__|_|__|_|_||_|_|_||__|_|"
 	@echo " ||_______________________||__________________________|"
 	@echo " | _____________________  ||      __   __  _  __    _ |"
@@ -53,7 +53,9 @@ all:
 	@echo " |___\_/   /________//   ________         /  / ||_|_|_|"
 	@echo " |___ /   (|________/   |\_______\       /  /| |______|"
 	@echo "      /                  \|________)     /  / | |"
+
 # Rule to link the object files into the final executable
+all: $(EXEC)
 $(EXEC): $(OBJ)
 	@echo "\033[1;34mLinking object files into the final executable...\033[0m"
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
@@ -65,16 +67,23 @@ $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 	@echo "\033[1;32mCompiled $< successfully!\033[0m"
 
+# Rule to run valgrind to check for memory leaks and data races
+val: $(EXEC)
+	@echo "\033[1;36mRunning valgrind to check for memory leaks...\033[0m"
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./$(EXEC)
+	@echo "\033[1;36mRunning valgrind to check for data races with Helgrind...\033[0m"
+	valgrind --tool=helgrind ./$(EXEC)
+	@echo "\033[1;32mValgrind check complete!\033[0m"
+
 # Clean up object files and the executable
 clean:
 	@echo "\033[1;31mCleaning up object files and the executable...\033[0m"
 	rm -f $(OBJ) $(EXEC)
 	@echo "\033[1;32mClean complete!\033[0m"
-fclean:
-	@echo "\033[1;31mCleaning up object files and the executable...\033[0m"
-	rm -f $(OBJ) $(EXEC)
-	@echo "\033[1;32mClean complete!\033[0m"
+
+fclean: clean
+
+re: fclean all
 
 # Phony targets
-.PHONY: all clean
-
+.PHONY: all clean fclean re val

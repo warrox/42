@@ -34,7 +34,9 @@ typedef struct s_data
 	pthread_mutex_t write_mutex;
 } t_data;
 
-void ft_parser(char **input, t_data *data);
-int ft_atoi(const char *nbr);
 
+/*****Philo func*****/
+int ft_parser(char **input, t_data *data);
+int ft_atoi(const char *nbr);
+void ft_time(t_data *data);
 #endif
