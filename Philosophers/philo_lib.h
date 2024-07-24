@@ -18,6 +18,7 @@ typedef struct s_philo
     int last_sleep;
     bool is_eating;
 	int id;
+	pthread_t thread;
 	struct s_data *data;
 } t_philo;
 
