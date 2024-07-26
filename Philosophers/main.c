@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/24 16:34:19 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/26 15:47:41 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,13 +202,13 @@ void ft_eat(t_data *data, int i)
     data->philos[i].last_meal = data->ms;
     long end_time = data->ms + data->time_eat;
     while (data->ms < end_time)
-    {
-        pthread_mutex_lock(&data->write_mutex);
-        ft_time(data);
-        printf("%ld %d is eating[🍝]\n", data->ms, i);
-        pthread_mutex_unlock(&data->write_mutex);
-        usleep(1000); // pour prevenir des threads qui block
-    }
+	{
+		ft_time(data);
+	}
+	pthread_mutex_lock(&data->write_mutex);
+	printf("%ld %d is eating[🍝]\n", data->ms, i);
+	pthread_mutex_unlock(&data->write_mutex);
+	usleep(1000); // pour prevenir des threads qui block
 }
 
 bool ft_takefork(t_data *data, int i)
