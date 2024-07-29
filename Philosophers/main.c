@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/29 16:13:22 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/29 16:40:43 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ void *ft_isdying(void *arg) {
         }
         usleep(1000); // Check every 1 millisecond
     }
-    return NULL;
+    return (NULL);
 }
 
 void *ft_routine(void *arg) {
@@ -310,7 +310,7 @@ void *ft_routine(void *arg) {
         printf("%ld %d is thinking[🤔]...\n", data->ms, i);
         pthread_mutex_unlock(&data->write_mutex);
     }
-    return NULL;
+    return (NULL);
 }
 
 int start_simulation(t_data *data) {
@@ -329,16 +329,17 @@ int start_simulation(t_data *data) {
         data->philos[i].data = data;
         if (pthread_mutex_init(&data->philos[i].fork, NULL) != 0) {
             printf("Mutex initialization failed for philosopher %d\n", i);
-            return -1;
+            return (-1);
         }
         i++;
     }
 
     i = 0;
-    while (i < data->philo_nbr) {
+    while (i < data->philo_nbr) 
+	{
         if (pthread_create(&data->philos[i].thread, NULL, ft_routine, (void *)&data->philos[i]) != 0) {
             printf("Error creating thread %d\n", i);
-            return -1;
+            return (-1);
         }
         usleep(50);
         i++;
@@ -346,20 +347,22 @@ int start_simulation(t_data *data) {
 
     if (pthread_create(&data->die_thread, NULL, ft_isdying, (void *)data) != 0) {
         printf("Error creating death monitoring thread\n");
-        return -1;
+        return (-1);
     }
 
     i = 0;
-    while (i < data->philo_nbr) {
+    while (i < data->philo_nbr) 
+	{
         if (pthread_join(data->philos[i].thread, NULL) != 0) {
             printf("Error joining thread %d\n", i);
-            return -1;
+            return (-1);
         }
         i++;
     }
 
     i = 0;
-    while (i < data->philo_nbr) {
+    while (i < data->philo_nbr) 
+	{
         pthread_mutex_destroy(&data->philos[i].fork);
         i++;
     }
@@ -367,23 +370,25 @@ int start_simulation(t_data *data) {
     pthread_mutex_destroy(&data->write_mutex);
 
     free(data->philos);
-    return 0;
+    return (0);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
     t_data data;
 
-    if (argc < 5) {
+    if (argc < 5) 
+	{
         printf("Not enough parameters, you should enter: number_of_philosophers, time_to_die, time_to_eat, time_to_sleep. Optional: [number_of_times_each_philosopher_must_eat]\n");
         printf("Exiting Philo\n");
         exit(EXIT_FAILURE);
     }
 
     if (ft_parser(argv, &data) == -1)
-        return -1;
+        return (-1);
     ft_time(&data);
     start_simulation(&data);
 
-    return 0;
+    return (0);
 }
 
