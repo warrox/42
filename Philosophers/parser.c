@@ -6,28 +6,28 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/22 13:46:26 by bvan-pae         ###   ########.fr       */
+/*   Updated: 2024/07/29 15:55:31 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
 #include <stdio.h>
 
-void add_philo_to_array(t_data *data)
-{
-	int i = 0;
-	int j = 1;
-	data->arrayofphilo = malloc(sizeof(int) * data->philo_nbr);
-	if(!data->arrayofphilo)
-		return;
-	
-	while(i < data->philo_nbr)
-	{
-		data->arrayofphilo[i] = j;
-		j++;
-		i++;
-	}
-}
+// void add_philo_to_array(t_data *data)
+// {
+// 	int i = 0;
+// 	int j = 1;
+// 	data->arrayofphilo = malloc(sizeof(int) * data->philo_nbr);
+// 	if(!data->arrayofphilo)
+// 		return;
+// 	
+// 	while(i < data->philo_nbr)
+// 	{
+// 		data->arrayofphilo[i] = j;
+// 		j++;
+// 		i++;
+// 	}
+// }
 
 void ft_check_param(char *input, int i, t_data *data)
 {
@@ -54,11 +54,11 @@ int ft_parser(char **input, t_data *data)
 		ft_check_param(input[i], i,data);
 		i++;
 	}
-	if(data->time_die < 1000 || data->time_eat < 1000)
+	if(data->time_die < 1000 || data->time_eat < 1000 || data->time_sleep < 1000)
 	{
 		printf("You should pass all the params in m/s exept for [n]Philo\n");
 		return(-1);
 	}
-	add_philo_to_array(data);
+	// add_philo_to_array(data);
 	return(0);
 }
