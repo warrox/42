@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/29 15:55:31 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/30 14:46:01 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,5 @@ int ft_parser(char **input, t_data *data)
 		ft_check_param(input[i], i,data);
 		i++;
 	}
-	if(data->time_die < 1000 || data->time_eat < 1000 || data->time_sleep < 1000)
-	{
-		printf("You should pass all the params in m/s exept for [n]Philo\n");
-		return(-1);
-	}
-	// add_philo_to_array(data);
 	return(0);
 }
