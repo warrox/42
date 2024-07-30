@@ -6,11 +6,13 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/30 15:28:45 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:17:30 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+#include <pthread.h>
+#include <stdio.h>
 bool check_flag(t_data *data)
 {
 	pthread_mutex_lock(&data->flag_mutex);
@@ -28,10 +30,10 @@ void *ft_isdying(void *arg)
 	int i = 0;
 	while (1) 
 	{    
-		i = 0;
+		i = 1;
 		while (i <= data->philo_nbr) 
         {
-			if (ft_time() - data->philos[i].last_meal > data->time_die)
+			if (ft_time() - data->philos[i].last_meal > data->time_die && data->philos[i].id != 0)
 			{   
 				pthread_mutex_lock(&data->flag_mutex);
 				data->flag = 1;
@@ -83,16 +85,25 @@ bool ft_takefork(t_data *data, int i)
     if (i == data->philo_nbr - 1) 
     {
         pthread_mutex_lock(&data->philos[right_fork].fork);
-        printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+        pthread_mutex_lock(&data->write_mutex);
+		printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+		pthread_mutex_unlock(&data->write_mutex);
         pthread_mutex_lock(&data->philos[left_fork].fork);
-        printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
+        pthread_mutex_lock(&data->write_mutex);
+		printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
+		pthread_mutex_unlock(&data->write_mutex);
     } 
     else 
     {
         pthread_mutex_lock(&data->philos[left_fork].fork);
-        printf("%ld %d has taken a left fork[🍴]\n",ft_time() - data->ms, i);
-        pthread_mutex_lock(&data->philos[right_fork].fork);
-        printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+		//lock avec write mutex
+		pthread_mutex_lock(&data->write_mutex);
+		printf("%ld %d has taken a left fork[🍴]\n",ft_time() - data->ms, i);
+        pthread_mutex_unlock(&data->write_mutex);
+		pthread_mutex_lock(&data->philos[right_fork].fork);
+		pthread_mutex_lock(&data->write_mutex);
+		printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+		pthread_mutex_unlock(&data->write_mutex);
     }
 	pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
 	pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork); 
@@ -144,8 +155,7 @@ int start_simulation(t_data *data)
         printf("Write mutex initialization failed\n");
         return -1;
     }
-
-    while (i < data->philo_nbr) 
+	while (i < data->philo_nbr) 
     {
         data->philos[i].id = i + 1;
         data->philos[i].data = data;
@@ -170,7 +180,6 @@ int start_simulation(t_data *data)
         i++;
     }
 
-    
 	if (pthread_create(&data->die_thread, NULL, ft_isdying, (void *)data) != 0) 
     {
         printf("Error creating death monitoring thread\n");

@@ -6,28 +6,11 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/30 14:46:01 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:18:55 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
-#include <stdio.h>
-
-// void add_philo_to_array(t_data *data)
-// {
-// 	int i = 0;
-// 	int j = 1;
-// 	data->arrayofphilo = malloc(sizeof(int) * data->philo_nbr);
-// 	if(!data->arrayofphilo)
-// 		return;
-// 	
-// 	while(i < data->philo_nbr)
-// 	{
-// 		data->arrayofphilo[i] = j;
-// 		j++;
-// 		i++;
-// 	}
-// }
 
 void ft_check_param(char *input, int i, t_data *data)
 {
@@ -53,6 +36,11 @@ int ft_parser(char **input, t_data *data)
 	{
 		ft_check_param(input[i], i,data);
 		i++;
+	}
+	if(data->philo_nbr > 200)
+	{
+		printf("Number of philo can't exceed 200\n");
+		exit(EXIT_FAILURE);
 	}
 	return(0);
 }
