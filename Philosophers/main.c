@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 05:30:47 by bvan-pae         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:34:32 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void *ft_isdying(void *arg)
 		i = 1;
 		while (i <= data->philo_nbr) 
         {
-			if (ft_time() - data->philos[i].last_meal > data->time_die && data->philos[i].id != 0)
+			pthread_mutex_lock(&data->general_mutex);
+			long time_since_last_meal = ft_time() - data->philos[i].last_meal;
+			pthread_mutex_unlock(&data->general_mutex);
+			if (time_since_last_meal > data->time_die && data->philos[i].id != 0)
 			{   
 				pthread_mutex_lock(&data->flag_mutex);
 				data->flag = 1;
@@ -79,8 +82,11 @@ void ft_issleeping(t_data *data, int i)
 
 void ft_eat(t_data *data, int i) 
 {
-    pthread_mutex_lock(&data->write_mutex);
-    data->philos[i].last_meal = ft_time();
+	pthread_mutex_lock(&data->general_mutex);
+	data->philos[i].last_meal = ft_time();
+	pthread_mutex_unlock(&data->general_mutex);
+    
+	pthread_mutex_lock(&data->write_mutex);
     printf("%ld %d is eating[🍝]\n", ft_time() - data->ms, i);
     pthread_mutex_unlock(&data->write_mutex);
     ft_usleep(data->time_eat, data);
