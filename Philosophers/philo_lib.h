@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <unistd.h>
 #include <stdbool.h>
 #include <sys/time.h>
@@ -29,6 +28,7 @@ typedef struct s_data {
 	long ms;
     pthread_mutex_t write_mutex;
 	pthread_mutex_t flag_mutex;
+	pthread_mutex_t general_mutex;
     pthread_t die_thread;
 } t_data;
 

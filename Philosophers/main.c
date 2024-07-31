@@ -6,13 +6,22 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/30 16:17:30 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/31 05:30:47 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
 #include <pthread.h>
 #include <stdio.h>
+
+int philo_counter(t_data *data)
+{
+	int i = 0;
+	while(data->philos[i].id)
+		i++;
+	return(i);
+}
+
 bool check_flag(t_data *data)
 {
 	pthread_mutex_lock(&data->flag_mutex);
@@ -150,6 +159,12 @@ int start_simulation(t_data *data)
         printf("Write mutex initialization failed\n");
         return -1;
     }
+	if (pthread_mutex_init(&data->general_mutex, NULL) != 0) 
+    {
+        printf("Write mutex initialization failed\n");
+        return -1;
+    }
+
 	if (pthread_mutex_init(&data->flag_mutex, NULL) != 0) 
     {
         printf("Write mutex initialization failed\n");
@@ -170,7 +185,9 @@ int start_simulation(t_data *data)
     i = 0;
     while (i < data->philo_nbr) 
     {
+		pthread_mutex_lock(&data->general_mutex); // check if correcxt
 		data->philos[i].last_meal = ft_time(); 
+		pthread_mutex_unlock(&data->general_mutex); // same
 		if (pthread_create(&data->philos[i].thread, NULL, ft_routine, (void *)&data->philos[i]) != 0) 
         {
             printf("Error creating thread %d\n", i);
@@ -204,7 +221,7 @@ int start_simulation(t_data *data)
         i++;
     }
 
-    pthread_mutex_destroy(&data->write_mutex);
+	pthread_mutex_destroy(&data->write_mutex);
     free(data->philos);
     return 0;
 }
