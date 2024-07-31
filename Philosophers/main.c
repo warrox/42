@@ -6,11 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 14:53:35 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:58:30 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+#include <stdio.h>
 
 bool check_flagda(t_data *data)
 {
@@ -153,7 +154,7 @@ bool ft_takefork(t_data *data, int i)
     }
 	pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
 	pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork); 
-    return true;
+    return (true);
 }
 
 void *ft_routine(void *arg) 
@@ -188,28 +189,28 @@ int start_simulation(t_data *data)
     int i = 0;
     data->philos = malloc(sizeof(t_philo) * (data->philo_nbr + 1));
     if (!data->philos)
-        return -1;
+        return (-1);
 
     if (pthread_mutex_init(&data->write_mutex, NULL) != 0) 
     {
         printf("Write mutex initialization failed\n");
-        return -1;
+        return (-1);
     }
 	if (pthread_mutex_init(&data->general_mutex, NULL) != 0) 
     {
         printf("Write mutex initialization failed\n");
-        return -1;
+        return (-1);
     }
 
 	if (pthread_mutex_init(&data->flag_mutex, NULL) != 0) 
     {
         printf("Write mutex initialization failed\n");
-        return -1;
+        return (-1);
     }
 	if (pthread_mutex_init(&data->eatcounter_mutex, NULL) != 0) 
     {
         printf("Write mutex initialization failed\n");
-        return -1;
+        return (-1);
     }
 
 	while (i < data->philo_nbr) 
@@ -220,7 +221,7 @@ int start_simulation(t_data *data)
         if (pthread_mutex_init(&data->philos[i].fork, NULL) != 0) 
         {
             printf("Mutex initialization failed for philosopher %d\n", i);
-            return -1;
+            return (-1);
         }
         i++;
     }
@@ -234,7 +235,7 @@ int start_simulation(t_data *data)
 		if (pthread_create(&data->philos[i].thread, NULL, ft_routine, (void *)&data->philos[i]) != 0) 
         {
             printf("Error creating thread %d\n", i);
-            return -1;
+            return (-1);
         }
         usleep(50);
         i++;
@@ -263,13 +264,12 @@ int start_simulation(t_data *data)
         pthread_mutex_destroy(&data->philos[i].fork);
         i++;
     }
-
 	pthread_mutex_destroy(&data->write_mutex);
     pthread_mutex_destroy(&data->eatcounter_mutex);
 	pthread_mutex_destroy(&data->general_mutex);
 	pthread_mutex_destroy(&data->flag_mutex);
 	free(data->philos);
-    return 0;
+    return (0);
 }
 
 int main(int argc, char **argv) 
@@ -285,10 +285,16 @@ int main(int argc, char **argv)
     }
     if (ft_parser(argv, &data) == -1)
 		return (-1);
-    // printf("sleep : %d\n", data.time_sleep);
-	// printf("eat : %d\n", data.time_eat);
 	data.ms = ft_time();
+	if(data.philo_nbr == 1)
+	{
+		printf("%ld %d has taken a fork[🍴]\n", ft_time() - data.ms, 1);
+		usleep(data.time_die * 1000);
+		printf("%ld %d died\n", (ft_time()- data.ms), 1);
+		return(0);
+	}
+
 	start_simulation(&data);
 
-    return 0;
+    return (0);
 }
