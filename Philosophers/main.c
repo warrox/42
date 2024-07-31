@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 05:44:59 by bvan-pae         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:47:39 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,8 +245,8 @@ int main(int argc, char **argv)
 
     if (ft_parser(argv, &data) == -1)
         return -1;
-    printf("sleep : %d\n", data.time_sleep);
-	printf("eat : %d\n", data.time_eat);
+    // printf("sleep : %d\n", data.time_sleep);
+	// printf("eat : %d\n", data.time_eat);
 	data.ms = ft_time();
 	start_simulation(&data);
 
