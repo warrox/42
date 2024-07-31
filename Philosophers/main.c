@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 05:34:32 by bvan-pae         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:44:59 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ bool ft_takefork(t_data *data, int i)
     else 
     {
         pthread_mutex_lock(&data->philos[left_fork].fork);
-		//lock avec write mutex
 		pthread_mutex_lock(&data->write_mutex);
 		printf("%ld %d has taken a left fork[🍴]\n",ft_time() - data->ms, i);
         pthread_mutex_unlock(&data->write_mutex);
@@ -180,6 +179,7 @@ int start_simulation(t_data *data)
     {
         data->philos[i].id = i + 1;
         data->philos[i].data = data;
+		data->philos[i].last_meal = 0;
         if (pthread_mutex_init(&data->philos[i].fork, NULL) != 0) 
         {
             printf("Mutex initialization failed for philosopher %d\n", i);
