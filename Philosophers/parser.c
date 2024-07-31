@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/30 16:18:55 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:45:50 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void ft_check_param(char *input, int i, t_data *data)
 		data->time_sleep = ft_atoi(input);
 	if(i == 5)
 		data->eat_cycle = ft_atoi(input);
+	else
+		data->eat_cycle = -1;
 }
 
 int ft_parser(char **input, t_data *data)

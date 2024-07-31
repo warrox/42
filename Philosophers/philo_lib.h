@@ -6,29 +6,34 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <sys/time.h>
-
+#include <pthread.h>
 struct s_data;
 
-typedef struct s_philo {
+typedef struct s_philo 
+{
     pthread_mutex_t fork;
     int last_meal;
     int id;
+	int eat_counter;
     struct s_data *data;
     pthread_t thread;
 } t_philo;
 
-typedef struct s_data {
+typedef struct s_data 
+{
     t_philo *philos;
     int philo_nbr;
     int time_die;
     int time_eat;
     int time_sleep;
 	int eat_cycle;
+	int flagada;
     int flag;
 	long ms;
     pthread_mutex_t write_mutex;
 	pthread_mutex_t flag_mutex;
 	pthread_mutex_t general_mutex;
+	pthread_mutex_t eatcounter_mutex;
     pthread_t die_thread;
 } t_data;
 
