@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:50:21 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 14:19:42 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,7 @@ bool				fork_for_all(t_data *data, int left_fork, int right_fork,
 						int i);
 void				write_think(t_data *data, int i);
 void				middle_init(t_data *data);
+int					isdying_box1(t_data *data, int save_all_eats,
+						int refresh_eatcounter, int i);
+void				mutex_eatcounter(t_data *data);
 #endif

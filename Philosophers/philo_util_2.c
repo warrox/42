@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:51:51 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:33:50 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 14:18:15 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,9 @@ void	*ft_isdying(void *arg)
 		data->i = 1;
 		while (data->i < data->philo_nbr)
 		{
-			pthread_mutex_lock(&data->eatcounter_mutex);
-			data->refresh_eatcounter = data->philos[data->i].eat_counter;
-			pthread_mutex_unlock(&data->eatcounter_mutex);
-			pthread_mutex_lock(&data->general_mutex);
-			data->s_all_eats += 1;
-			pthread_mutex_unlock(&data->general_mutex);
-			data->i++;
+			if (isdying_box1(data, data->s_all_eats, data->refresh_eatcounter,
+					data->i) == 1)
+				return (NULL);
 		}
 		if (isdying_box(data, data->s_all_eats, data->refresh_eatcounter,
 				data->i) == 1)

@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 # Source files
-SRC = main.c parser.c parser_util.c philo_util.c philo_util_2.c simulation.c simulation_util.c
+SRC = main.c parser.c parser_util.c philo_util.c philo_util_2.c simulation.c simulation_util.c philo_util_3.c 
 
 # Object files
 OBJ = $(SRC:.c=.o)
