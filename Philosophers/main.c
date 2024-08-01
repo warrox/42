@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:22:30 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 20:29:09 by bvan-pae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ bool	ft_takefork(t_data *data, int i)
 		if (fork_last(data, data->left_fork, data->right_fork, i) == false)
 			return (false);
 	}
-	pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
-	pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork);
 	return (true);
 }
 
@@ -73,6 +71,8 @@ void	*ft_routine(void *arg)
 		if (check_flag(data) == true || check_flagda(data) == true)
 			break ;
 		ft_eat(data, i);
+		pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
+		pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork);
 		if (check_flag(data) == true || check_flagda(data) == true)
 			break ;
 		ft_issleeping(data, i);
