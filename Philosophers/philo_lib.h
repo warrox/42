@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:24:54 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:50:21 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ bool				fork_last(t_data *data, int left_fork, int right_fork,
 bool				fork_for_all(t_data *data, int left_fork, int right_fork,
 						int i);
 void				write_think(t_data *data, int i);
+void				middle_init(t_data *data);
 #endif

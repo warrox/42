@@ -6,11 +6,17 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:48:33 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 17:50:28 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:49:30 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+
+void	middle_init(t_data *data)
+{
+	data->philos[data->i].id = 0;
+	data->i = 0;
+}
 
 int	mutex_init(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:13 by whamdi            #+#    #+#             */
-/*   Updated: 2024/07/31 17:51:44 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:48:16 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	start_simulation(t_data *data)
 			return (-1);
 		data->i++;
 	}
-	data->i = 0;
+	middle_init(data);
 	while (data->i < data->philo_nbr)
 	{
 		if (create_philo(data, data->i) == -1)
