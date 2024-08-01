@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:07:50 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:30:20 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:16:26 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,11 @@ bool	fork_last(t_data *data, int left_fork, int right_fork, int i)
 	return (true);
 }
 
-int	isdying_box(t_data *data, int save_all_eats, int refresh_eatcounter, int i)
+int	isdying_box(t_data *data, int compare)
 {
-	long	time_since_last_meal;
-
-	if (refresh_eatcounter >= data->eat_cycle && data->eat_cycle > 0)
+	if (data->eat_cycle > -1 && compare >= data->eat_cycle)
 	{
-		if (save_all_eats >= data->philo_nbr)
-		{
-			data->flagada = 1;
-			return (1);
-		}
-	}
-	pthread_mutex_lock(&data->general_mutex);
-	time_since_last_meal = ft_time() - data->philos[i].last_meal;
-	pthread_mutex_unlock(&data->general_mutex);
-	if (time_since_last_meal > data->time_die && data->philos[i].id != 0)
-	{
-		pthread_mutex_lock(&data->flag_mutex);
-		data->flag = 1;
-		pthread_mutex_unlock(&data->flag_mutex);
-		pthread_mutex_lock(&data->write_mutex);
-		printf("%ld %d died\n", (ft_time() - data->ms), data->philos[i].id);
-		pthread_mutex_unlock(&data->write_mutex);
+		data->flagada = 1;
 		return (1);
 	}
 	return (0);

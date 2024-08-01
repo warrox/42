@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:10:02 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 14:27:06 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	ft_parser(char **input, t_data *data)
 		printf("Number of philo can't exceed 200\n");
 		return (-1);
 	}
-	if (data->eat_cycle == 0)
+	if (data->eat_cycle == 0 || data->philo_nbr == 0)
 	{
-		printf("Philos can't eat with 0 meal\n");
+		printf("Arg error\n");
 		return (-1);
 	}
 	return (0);
