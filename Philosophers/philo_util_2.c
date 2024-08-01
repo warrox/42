@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:51:51 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 15:16:45 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:51:38 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	*ft_isdying(void *arg)
 	data->i = 0;
 	data->s_all_eats = 0;
 	data->refresh_eatcounter = 0;
-	data->compare_cycleeat = 0;
 	while (1)
 	{
 		data->i = 1;
@@ -60,8 +59,7 @@ void	*ft_isdying(void *arg)
 			if (isdying_box1(data, data->s_all_eats, data->refresh_eatcounter,
 					data->i) == 1)
 				return (NULL);
-			data->compare_cycleeat = data->philos[data->i].eat_counter;
-			if (isdying_box(data, data->compare_cycleeat) == 1)
+			if (isdying_box(data, data->philos) == 1)
 				return (NULL);
 			data->i++;
 		}

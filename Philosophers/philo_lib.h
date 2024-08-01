@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 15:17:59 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:54:50 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int					philo_counter(t_data *data);
 bool				check_flag(t_data *data);
 void				*ft_isdying(void *arg);
 void				ft_usleep(int time, t_data *data);
-int					isdying_box(t_data *data, int compare);
+int					isdying_box(t_data *data, t_philo *philo);
 int					start_simulation(t_data *data);
 void				*ft_routine(void *arg);
 int					mutex_init(t_data *data);

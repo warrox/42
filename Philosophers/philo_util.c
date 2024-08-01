@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:07:50 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 15:16:26 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:53:10 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,19 @@ bool	fork_last(t_data *data, int left_fork, int right_fork, int i)
 	return (true);
 }
 
-int	isdying_box(t_data *data, int compare)
+int	isdying_box(t_data *data, t_philo *philo)
 {
-	if (data->eat_cycle > -1 && compare >= data->eat_cycle)
+	int	i;
+
+	i = 1;
+	while (i <= data->philo_nbr)
 	{
-		data->flagada = 1;
-		return (1);
+		if (data->eat_cycle == -1 || philo[i].eat_counter < data->eat_cycle)
+			return (0);
+		i++;
 	}
-	return (0);
+	data->flagada = 1;
+	return (1);
 }
 
 int	ft_time(void)
