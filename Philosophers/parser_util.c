@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+
 int	ft_atoi(const char *nbr)
 {
 	long	result;
@@ -29,4 +30,3 @@ int	ft_atoi(const char *nbr)
 		result = (*nbr++ - '0') + result * 10;
 	return (result * sign);
 }
-

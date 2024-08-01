@@ -1,46 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_lib.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
+/*   Updated: 2024/08/01 11:24:54 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_LIB_H
-#define PHILO_LIB_H
+# define PHILO_LIB_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <sys/time.h>
-#include <pthread.h>
-struct s_data;
+# include <pthread.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <unistd.h>
 
-typedef struct s_philo 
+struct	s_data;
+
+typedef struct s_philo
 {
-    pthread_mutex_t fork;
-    int last_meal;
-    int id;
-	int eat_counter;
-    struct s_data *data;
-    pthread_t thread;
-} t_philo;
+	pthread_mutex_t	fork;
+	int				last_meal;
+	int				id;
+	int				eat_counter;
+	struct s_data	*data;
+	pthread_t		thread;
+}					t_philo;
 
-typedef struct s_data 
+typedef struct s_data
 {
-    t_philo *philos;
-    int philo_nbr;
-    int time_die;
-    int time_eat;
-    int time_sleep;
-	int eat_cycle;
-	int flagada;
-    int flag;
-	long ms;
-    pthread_mutex_t write_mutex;
-	pthread_mutex_t flag_mutex;
-	pthread_mutex_t general_mutex;
-	pthread_mutex_t eatcounter_mutex;
-    pthread_t die_thread;
-} t_data;
+	t_philo			*philos;
+	int				philo_nbr;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				eat_cycle;
+	int				flagada;
+	int				flag;
+	int				i;
+	long			ms;
+	int				s_all_eats;
+	int				refresh_eatcounter;
+	int				left_fork;
+	int				right_fork;
+	pthread_mutex_t	write_mutex;
+	pthread_mutex_t	flag_mutex;
+	pthread_mutex_t	general_mutex;
+	pthread_mutex_t	eatcounter_mutex;
+	pthread_t		die_thread;
+}					t_data;
 
 /*****Philo func*****/
-int ft_parser(char **input, t_data *data);
-int ft_atoi(const char *nbr);
-int ft_time(void);
-void ft_usleep(int time, t_data *data);
-
+int					ft_parser(char **input, t_data *data);
+int					ft_atoi(const char *nbr);
+int					ft_time(void);
+void				ft_usleep(int time, t_data *data);
+bool				check_flagda(t_data *data);
+int					philo_counter(t_data *data);
+bool				check_flag(t_data *data);
+void				*ft_isdying(void *arg);
+void				ft_usleep(int time, t_data *data);
+int					isdying_box(t_data *data, int save_all_eats,
+						int refresh_eatcounter, int i);
+int					start_simulation(t_data *data);
+void				*ft_routine(void *arg);
+int					mutex_init(t_data *data);
+int					init_philo_thread(t_data *data, int i);
+bool				fork_last(t_data *data, int left_fork, int right_fork,
+						int i);
+bool				fork_for_all(t_data *data, int left_fork, int right_fork,
+						int i);
+void				write_think(t_data *data, int i);
 #endif
