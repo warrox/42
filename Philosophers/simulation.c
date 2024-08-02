@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:13 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 16:01:18 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 16:48:58 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ void	destroy_and_free(t_data *data)
 	pthread_mutex_destroy(&data->write_mutex);
 	pthread_mutex_destroy(&data->eatcounter_mutex);
 	pthread_mutex_destroy(&data->philonbr_mutex);
-	pthread_mutex_destroy(&data->flag_mutex);	
+	pthread_mutex_destroy(&data->flag_mutex);
 	pthread_mutex_destroy(&data->flagada_mutex);
-	pthread_mutex_destroy(&data->eatcounter_mutex);
 	pthread_mutex_destroy(&data->lastmeal_mutex);
 	pthread_mutex_destroy(&data->salleat_mutex);
 	free(data->philos);
@@ -78,24 +77,16 @@ void	destroy_and_free(t_data *data)
 
 int	start_simulation(t_data *data)
 {
-	int cpy_philonbr;
-
-	data->i = 0;	
-	// pthread_mutex_lock(&data->philonbr_mutex);
-	cpy_philonbr = data->philo_nbr;
-	// pthread_mutex_unlock(&data->philonbr_mutex);	
-	// pthread_mutex_lock(&data->initphilo_mutex);
-	data->philos = malloc(sizeof(t_philo) * (cpy_philonbr + 1));
-	// pthread_mutex_unlock(&data->initphilo_mutex);
+	data->i = 0;
+	data->philos = malloc(sizeof(t_philo) * (data->philo_nbr + 1));
 	if (!data->philos)
 		return (-1);
 	if (mutex_init(data) == -1)
 		return (-1);
 	while (data->i < data->philo_nbr)
 	{
-		if (init_philo_thread(data, data->i) == -1)
+		if (init_philo_thread(data, data->i++) == -1)
 			return (-1);
-		data->i++;
 	}
 	middle_init(data);
 	while (data->i < data->philo_nbr)

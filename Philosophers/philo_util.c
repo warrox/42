@@ -24,8 +24,8 @@ void	write_think(t_data *data, int i)
 int	isdying_box(t_data *data, t_philo *philo)
 {
 	int	i;
-	int tmp_eatcounter; 
-	
+	int	tmp_eatcounter;
+
 	tmp_eatcounter = 0;
 	i = 0;
 	while (i < data->philo_nbr)
