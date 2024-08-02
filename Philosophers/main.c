@@ -6,11 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 20:29:09 by bvan-pae         ###   ########.fr       */
+/*   Updated: 2024/08/02 13:43:15 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+#include <pthread.h>
 #include <stdio.h>
 
 void	ft_issleeping(t_data *data, int i)
@@ -23,9 +24,9 @@ void	ft_issleeping(t_data *data, int i)
 
 void	ft_eat(t_data *data, int i)
 {
-	pthread_mutex_lock(&data->general_mutex);
+	pthread_mutex_lock(&data->lastmeal_mutex);
 	data->philos[i].last_meal = ft_time();
-	pthread_mutex_unlock(&data->general_mutex);
+	pthread_mutex_unlock(&data->lastmeal_mutex);
 	pthread_mutex_lock(&data->eatcounter_mutex);
 	data->philos[i].eat_counter += 1;
 	pthread_mutex_unlock(&data->eatcounter_mutex);
@@ -33,21 +34,35 @@ void	ft_eat(t_data *data, int i)
 	printf("%ld %d is eating[🍝]\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 	ft_usleep(data->time_eat, data);
+	pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
+	pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork);
 }
 
 bool	ft_takefork(t_data *data, int i)
 {
+	pthread_mutex_lock(&data->philonbr_mutex);
+	pthread_mutex_lock(&data->philos[i].fork);
 	data->left_fork = i % data->philo_nbr;
-	data->right_fork = (i + 1) % data->philo_nbr;
+	pthread_mutex_unlock(&data->philos[i].fork);
+	pthread_mutex_unlock(&data->philonbr_mutex);	
+	pthread_mutex_lock(&data->philonbr_mutex);
+	pthread_mutex_lock(&data->philos[i].fork);
+	data->right_fork = (i + 1) % data->philo_nbr;	
+	pthread_mutex_unlock(&data->philos[i].fork);
+	pthread_mutex_unlock(&data->philonbr_mutex);
 	if (check_flagda(data))
 		return (false);
+	
+	pthread_mutex_lock(&data->philonbr_mutex);
 	if (i == data->philo_nbr - 1)
 	{
+		pthread_mutex_unlock(&data->philonbr_mutex);
 		if (fork_for_all(data, data->left_fork, data->right_fork, i) == false)
 			return (false);
 	}
 	else
 	{
+		pthread_mutex_unlock(&data->philonbr_mutex);
 		if (fork_last(data, data->left_fork, data->right_fork, i) == false)
 			return (false);
 	}
@@ -71,8 +86,6 @@ void	*ft_routine(void *arg)
 		if (check_flag(data) == true || check_flagda(data) == true)
 			break ;
 		ft_eat(data, i);
-		pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
-		pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork);
 		if (check_flag(data) == true || check_flagda(data) == true)
 			break ;
 		ft_issleeping(data, i);

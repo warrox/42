@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:13 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 11:48:16 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 13:33:37 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	create_philo(t_data *data, int i)
 {
-	pthread_mutex_lock(&data->general_mutex);
+	pthread_mutex_lock(&data->lastmeal_mutex);
 	data->philos[i].last_meal = ft_time();
-	pthread_mutex_unlock(&data->general_mutex);
+	pthread_mutex_unlock(&data->lastmeal_mutex);
 	if (pthread_create(&data->philos[i].thread, NULL, ft_routine,
 			(void *)&data->philos[i]) != 0)
 	{
@@ -66,15 +66,26 @@ void	destroy_and_free(t_data *data)
 	}
 	pthread_mutex_destroy(&data->write_mutex);
 	pthread_mutex_destroy(&data->eatcounter_mutex);
-	pthread_mutex_destroy(&data->general_mutex);
-	pthread_mutex_destroy(&data->flag_mutex);
+	pthread_mutex_destroy(&data->philonbr_mutex);
+	pthread_mutex_destroy(&data->flag_mutex);	
+	pthread_mutex_destroy(&data->flagada_mutex);
+	pthread_mutex_destroy(&data->eatcounter_mutex);
+	pthread_mutex_destroy(&data->lastmeal_mutex);
+	pthread_mutex_destroy(&data->salleat_mutex);
 	free(data->philos);
 }
 
 int	start_simulation(t_data *data)
 {
-	data->i = 0;
-	data->philos = malloc(sizeof(t_philo) * (data->philo_nbr + 1));
+	int cpy_philonbr;
+
+	data->i = 0;	
+	// pthread_mutex_lock(&data->philonbr_mutex);
+	cpy_philonbr = data->philo_nbr;
+	// pthread_mutex_unlock(&data->philonbr_mutex);	
+	// pthread_mutex_lock(&data->initphilo_mutex);
+	data->philos = malloc(sizeof(t_philo) * (cpy_philonbr + 1));
+	// pthread_mutex_unlock(&data->initphilo_mutex);
 	if (!data->philos)
 		return (-1);
 	if (mutex_init(data) == -1)

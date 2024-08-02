@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 15:54:50 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 13:31:24 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,12 @@ typedef struct s_data
 	int				compare_cycleeat;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	flag_mutex;
-	pthread_mutex_t	general_mutex;
+	pthread_mutex_t	philonbr_mutex;
+	pthread_mutex_t	flagada_mutex;
 	pthread_mutex_t	eatcounter_mutex;
+	pthread_mutex_t	lastmeal_mutex;
+	pthread_mutex_t	salleat_mutex;
+	pthread_mutex_t	initphilo_mutex;
 	pthread_t		die_thread;
 }					t_data;
 

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:51:51 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/01 15:51:38 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 11:46:15 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 
 bool	check_flagda(t_data *data)
 {
+	pthread_mutex_lock(&data->flagada_mutex);
 	if (data->flagada == 1)
+	{
+		pthread_mutex_unlock(&data->flagada_mutex);
 		return (true);
+	}
+	pthread_mutex_unlock(&data->flagada_mutex);
 	return (false);
 }
 
