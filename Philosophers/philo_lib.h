@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:47:19 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 13:31:24 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 15:15:48 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ struct	s_data;
 
 typedef struct s_philo
 {
-	pthread_mutex_t	fork;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
+	int				hold_right;
+	int				hold_left;
 	int				last_meal;
 	int				id;
 	int				eat_counter;
@@ -57,6 +60,7 @@ typedef struct s_data
 	pthread_mutex_t	lastmeal_mutex;
 	pthread_mutex_t	salleat_mutex;
 	pthread_mutex_t	initphilo_mutex;
+	pthread_mutex_t *forks;
 	pthread_t		die_thread;
 }					t_data;
 

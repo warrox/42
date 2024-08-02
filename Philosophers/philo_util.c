@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:07:50 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 11:59:04 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:17:20 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,14 @@ void	write_think(t_data *data, int i)
 	pthread_mutex_unlock(&data->write_mutex);
 }
 
-bool	fork_for_all(t_data *data, int left_fork, int right_fork, int i)
-{
-	pthread_mutex_lock(&data->philos[right_fork].fork);
-	if (check_flag(data) == true || check_flagda(data) == true)
-		return (false);
-	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
-	pthread_mutex_unlock(&data->write_mutex);
-	pthread_mutex_lock(&data->philos[left_fork].fork);
-	if (check_flag(data) == true || check_flagda(data) == true)
-		return (false);
-	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
-	pthread_mutex_unlock(&data->write_mutex);
-	return (true);
-}
-
-bool	fork_last(t_data *data, int left_fork, int right_fork, int i)
-{
-	pthread_mutex_lock(&data->philos[left_fork].fork);
-	if (check_flag(data) == true || check_flagda(data) == true)
-		return (false);
-	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
-	pthread_mutex_unlock(&data->write_mutex);
-	pthread_mutex_lock(&data->philos[right_fork].fork);
-	if (check_flag(data) == true || check_flagda(data) == true)
-		return (false);
-	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
-	pthread_mutex_unlock(&data->write_mutex);
-	return (true);
-}
-
 int	isdying_box(t_data *data, t_philo *philo)
 {
 	int	i;
 	int tmp_eatcounter; 
 	
 	tmp_eatcounter = 0;
-	i = 1;
-	while (i <= data->philo_nbr)
+	i = 0;
+	while (i < data->philo_nbr)
 	{
 		pthread_mutex_lock(&data->eatcounter_mutex);
 		tmp_eatcounter = philo[i].eat_counter;

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:48:33 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 13:32:38 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 15:33:18 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int	mutex_init(t_data *data)
 		printf("Write mutex initialization failed\n");
 		return (-1);
 	}
+	int i = 0;
+	data->forks = malloc(data->philo_nbr * sizeof(pthread_mutex_t) + 1);
+	while(i < data->philo_nbr)
+		pthread_mutex_init(&data->forks[i++], NULL);
 	pthread_mutex_init(&data->initphilo_mutex,NULL);
 	return (0);
 }
@@ -63,14 +67,24 @@ int	mutex_init(t_data *data)
 int	init_philo_thread(t_data *data, int i)
 {
 	data->philos[i].id = i + 1;
+	data->philos[i].hold_right = 0;
+	data->philos[i].hold_left = 0;
 	data->philos[i].data = data;
 	pthread_mutex_lock(&data->eatcounter_mutex);
 	data->philos[i].eat_counter = 0;
 	pthread_mutex_unlock(&data->eatcounter_mutex);
-	if (pthread_mutex_init(&data->philos[i].fork, NULL) != 0)
-	{
-		printf("Mutex initialization failed for philosopher %d\n", i);
-		return (-1);
-	}
+
+	// if (i == data->philo_nbr - 1)
+	// {
+	// 	data->philos[i].left_fork = &data->forks[i];
+	// 	data->philos[i].right_fork = &data->forks[0];
+	// }
+	// else
+	// {
+	// 	data->philos[i].left_fork = &data->forks[i];
+	// 	data->philos[i].right_fork = &data->forks[i + 1];
+	// }
+	data->philos[i].left_fork = &data->forks[i];
+	data->philos[i].right_fork = &data->forks[i + 1];
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 13:43:15 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 16:17:42 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,55 @@ void	ft_eat(t_data *data, int i)
 	printf("%ld %d is eating[🍝]\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 	ft_usleep(data->time_eat, data);
-	pthread_mutex_unlock(&data->philos[i % data->philo_nbr].fork);
-	pthread_mutex_unlock(&data->philos[(i + 1) % data->philo_nbr].fork);
+	
+	pthread_mutex_lock(&data->philonbr_mutex);
+	data->philos[i].hold_right = 0;
+	data->philos[i].hold_left = 0;
+
+	if (i == data->philo_nbr - 1){
+		pthread_mutex_unlock(&data->philonbr_mutex);
+		pthread_mutex_unlock(data->philos[i].right_fork);
+		pthread_mutex_unlock(data->philos[i].left_fork);
+	}
+	else{
+		pthread_mutex_unlock(&data->philonbr_mutex);
+		pthread_mutex_unlock(data->philos[i].left_fork);
+		pthread_mutex_unlock(data->philos[i].right_fork);
+	}
+	// pthread_mutex_unlock(data->philos[i].left_fork);
+	// pthread_mutex_unlock(data->philos[i].right_fork);
 }
 
 bool	ft_takefork(t_data *data, int i)
 {
-	pthread_mutex_lock(&data->philonbr_mutex);
-	pthread_mutex_lock(&data->philos[i].fork);
-	data->left_fork = i % data->philo_nbr;
-	pthread_mutex_unlock(&data->philos[i].fork);
-	pthread_mutex_unlock(&data->philonbr_mutex);	
-	pthread_mutex_lock(&data->philonbr_mutex);
-	pthread_mutex_lock(&data->philos[i].fork);
-	data->right_fork = (i + 1) % data->philo_nbr;	
-	pthread_mutex_unlock(&data->philos[i].fork);
-	pthread_mutex_unlock(&data->philonbr_mutex);
-	if (check_flagda(data))
+	//lock left
+	// if (data->philos[i].left_fork == NULL){
+	// 	printf("\n\n%d\n\n", i);
+	// 	exit(1);
+	// }
+	// printf("philo %d %p\n", i , data->philos[i].right_fork);
+	pthread_mutex_lock(data->philos[i].left_fork);
+	data->philos[i].hold_left = 1;
+
+	if (check_flag(data) == true || check_flagda(data) == true){
+		pthread_mutex_unlock(data->philos[i].left_fork);
 		return (false);
+	}
+
+	pthread_mutex_lock(&data->write_mutex);
+	printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
+	pthread_mutex_unlock(&data->write_mutex);
 	
-	pthread_mutex_lock(&data->philonbr_mutex);
-	if (i == data->philo_nbr - 1)
-	{
-		pthread_mutex_unlock(&data->philonbr_mutex);
-		if (fork_for_all(data, data->left_fork, data->right_fork, i) == false)
-			return (false);
+	//lock right
+	pthread_mutex_lock(data->philos[i].right_fork);
+	data->philos[i].hold_right = 1;
+	if (check_flag(data) == true || check_flagda(data) == true){
+		return (false);
 	}
-	else
-	{
-		pthread_mutex_unlock(&data->philonbr_mutex);
-		if (fork_last(data, data->left_fork, data->right_fork, i) == false)
-			return (false);
-	}
+	pthread_mutex_lock(&data->write_mutex);
+	printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+	pthread_mutex_unlock(&data->write_mutex);
+
 	return (true);
 }
 
@@ -77,7 +94,7 @@ void	*ft_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	data = philo->data;
-	i = philo->id;
+	i = philo->id - 1;
 	while (1)
 	{
 		if (check_flag(data) == true || check_flagda(data) == true)
@@ -95,6 +112,19 @@ void	*ft_routine(void *arg)
 		if (check_flag(data) == true || check_flagda(data) == true)
 			break ;
 	}
+
+	if (data->philos[i].hold_left == 1){
+		pthread_mutex_lock(data->philos[i].left_fork);
+		pthread_mutex_unlock(data->philos[i].left_fork);
+		data->philos[i].hold_left = 0;
+	}
+	if (data->philos[i].hold_right == 1){
+		pthread_mutex_lock(data->philos[i].left_fork);
+		pthread_mutex_unlock(data->philos[i].right_fork);
+		data->philos[i].hold_right = 0;
+	}
+	// pthread_mutex_unlock(data->philos[i].right_fork);
+	// pthread_mutex_unlock(data->philos[i].left_fork);
 	return (NULL);
 }
 

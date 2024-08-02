@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:13 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 13:33:37 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/02 16:01:18 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	destroy_and_free(t_data *data)
 	i = 0;
 	while (i < data->philo_nbr)
 	{
-		pthread_mutex_destroy(&data->philos[i].fork);
+		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
 	pthread_mutex_destroy(&data->write_mutex);
@@ -73,6 +73,7 @@ void	destroy_and_free(t_data *data)
 	pthread_mutex_destroy(&data->lastmeal_mutex);
 	pthread_mutex_destroy(&data->salleat_mutex);
 	free(data->philos);
+	free(data->forks);
 }
 
 int	start_simulation(t_data *data)
@@ -101,9 +102,10 @@ int	start_simulation(t_data *data)
 	{
 		if (create_philo(data, data->i) == -1)
 			return (-1);
-		usleep(50);
+		usleep(500);
 		data->i++;
 	}
+	data->i = 0;
 	dying_watcher(data);
 	if (join_thread(data) == -1)
 		return (-1);
