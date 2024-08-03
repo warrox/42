@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:48:33 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 16:56:02 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/03 19:15:59 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,16 @@ int	init_philo_thread(t_data *data, int i)
 	pthread_mutex_lock(&data->eatcounter_mutex);
 	data->philos[i].eat_counter = 0;
 	pthread_mutex_unlock(&data->eatcounter_mutex);
-	data->philos[i].left_fork = &data->forks[i];
-	data->philos[i].right_fork = &data->forks[i + 1];
+	if (data->philos[i].id == data->philo_nbr)
+	{
+		data->philos[i].right_fork = &data->forks[i];
+		data->philos[i].left_fork = &data->forks[(i + 1) % data->philo_nbr];
+	}
+	else
+	{
+		data->philos[i].left_fork = &data->forks[i];
+		data->philos[i].right_fork = &data->forks[i + 1];
+	}
 	return (0);
 }
 
