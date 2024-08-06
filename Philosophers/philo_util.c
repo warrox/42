@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:07:50 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 14:17:20 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 11:48:58 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	write_think(t_data *data, int i)
 {
 	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d is thinking[🤔]...\n", ft_time() - data->ms, i);
+	printf("%ld %d is thinking\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 }
 

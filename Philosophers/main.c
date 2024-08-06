@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:10:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/03 19:12:38 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 11:55:38 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_eat(t_data *data, int i)
 	data->philos[i].eat_counter += 1;
 	pthread_mutex_unlock(&data->eatcounter_mutex);
 	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d is eating[🍝]\n", ft_time() - data->ms, i);
+	printf("%ld %d is eating\n", ft_time() - data->ms, data->philos[i].id);
 	pthread_mutex_unlock(&data->write_mutex);
 	ft_usleep(data->time_eat, data);
 	pthread_mutex_lock(&data->philonbr_mutex);
@@ -52,7 +52,7 @@ bool	ft_takefork(t_data *data, int i)
 		return (false);
 	}
 	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a left fork[🍴]\n", ft_time() - data->ms, i);
+	printf("%ld %d has taken a fork\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 	pthread_mutex_lock(data->philos[i].right_fork);
 	data->philos[i].hold_right = 1;
@@ -61,7 +61,7 @@ bool	ft_takefork(t_data *data, int i)
 		return (false);
 	}
 	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d has taken a right fork[🍴]\n", ft_time() - data->ms, i);
+	printf("%ld %d has taken a fork\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 	return (true);
 }

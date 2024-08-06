@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:51:51 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 14:17:37 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 10:57:21 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	*ft_isdying(void *arg)
 	while (1)
 	{
 		data->i = 0;
-		while (data->i < data->philo_nbr)
+		while (data->i < data->philo_nbr - 1)
 		{
 			if (isdying_box1(data, data->s_all_eats, data->refresh_eatcounter,
 					data->i) == 1)
 				return (NULL);
+			data->i++;
 			if (isdying_box(data, data->philos) == 1)
 				return (NULL);
-			data->i++;
 		}
 		usleep(1000);
 	}

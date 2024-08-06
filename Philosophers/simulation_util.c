@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:48:33 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/03 19:15:59 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 11:20:37 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	init_philo_thread(t_data *data, int i)
 void	ft_issleeping(t_data *data, int i)
 {
 	pthread_mutex_lock(&data->write_mutex);
-	printf("%ld %d is sleeping[😴]\n", ft_time() - data->ms, i);
+	printf("%ld %d is sleeping\n", ft_time() - data->ms, i);
 	pthread_mutex_unlock(&data->write_mutex);
 	ft_usleep(data->time_sleep, data);
 }

@@ -6,11 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:14:44 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/02 12:05:12 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 11:59:51 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_lib.h"
+#include <stdio.h>
 
 int	isdying_box1(t_data *data, int save_all_eats, int refresh_eatcounter, int i)
 {
@@ -21,7 +22,7 @@ int	isdying_box1(t_data *data, int save_all_eats, int refresh_eatcounter, int i)
 	pthread_mutex_lock(&data->lastmeal_mutex);
 	time_since_last_meal = ft_time() - data->philos[i].last_meal;
 	pthread_mutex_unlock(&data->lastmeal_mutex);
-	if (time_since_last_meal > data->time_die && data->philos[i].id != 0)
+	if (time_since_last_meal > data->time_die + 4)
 	{
 		pthread_mutex_lock(&data->flag_mutex);
 		data->flag = 1;
