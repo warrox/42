@@ -1,10 +1,13 @@
+#include <iostream>
+
 class Contact
 {
-	char *f_name;
-	char *l_name;
-	char *nickname;
-	char *phone_number;
-	char *darkest_secret;	
+public :
+	std::string f_name;
+	std::string l_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;	
 };
 
 /*Un contact possède les champs suivants : first name (prénom), last name
