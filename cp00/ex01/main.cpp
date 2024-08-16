@@ -7,13 +7,13 @@
 void search_data(PhoneBook& pb)
 {
 	int i = 0;
-	while(i<= // longeur de  ton phonebook)
+	int arraySize = sizeof(pb.array_contact) / sizeof(pb.array_contact[0]);
+	while(i++<= arraySize) // longeur de  ton phonebook)
 	{
-		
-		std::cout << "index : ["<<i <<"]"<< std::endl; 
-		std::cout << "first name : []"<< std::endl; 
-		std::cout << "last name : []"<< std::endl; 
-		std::cout << "Nick name : []"<< std::endl; 	
+		std::cout << "index : ["<<i+1 <<"]"<< std::endl; 
+		std::cout << "first name : ["<<pb.fname<<"]" << std::endl; 
+		std::cout << "last name : ["<<pb.lname<<"]" << std::endl; 
+		std::cout << "Nick name : ["<< std::endl; 	
 	}
 }
 
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 		}
 		if(!buff.compare(0,6,"SEARCH")) // replace by string compare
 		{				
-			search_data(pb, i);
+			search_data(pb);
 		}
 
 		if(!buff.compare(0,4, "EXIT"))
