@@ -78,10 +78,10 @@ void PhoneBook::add(int index) {
 void PhoneBook::display_specific_contact(std::string command)
 {
 	int index = command[0] - '0';
-
+	index = index - 1;
 	if(_contacts[index].is_created)
 	{
-		std::cout << "Accesing contact [";std::cout << index << "]" << std::endl;
+		std::cout << "Accesing contact [";std::cout << index + 1 << "]" << std::endl;
 		std::cout << std::setw(10) << "First name : "<<_contacts[index].f_name.substr(0, 10) << std::endl;
 		std::cout << std::setw(10) << "Last name : " << _contacts[index].l_name.substr(0, 10) << std::endl;
 		std::cout << std::setw(10) << "Nickname : "<< _contacts[index].nickname.substr(0, 10) << std::endl;
@@ -102,7 +102,7 @@ void PhoneBook::search(void) {
     for (int i = 0; i < 8; ++i) {
         if (!_contacts[i].f_name.empty()) {
             std::cout << "|";
-            std::cout << std::setw(10) << i << "|";
+            std::cout << std::setw(10) << i + 1 << "|";
 
             std::string firstName = _contacts[i].f_name;
             if (firstName.length() > 10) {
