@@ -1,15 +1,20 @@
+
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+
 #include "Contact.hpp"
 
 class PhoneBook
 {
-public :
-	Contact cont;
-	std::string array_contact[7][5];
-	char lname[7];
-	char fname[7];
-	char nickname[7];
-	char phonenumber[7];
-	char darkestsecret[7];
+public:
+    PhoneBook(void);
+    ~PhoneBook(void);
+    void add(int index);
+    void search(void);
+	void display_specific_contact(std::string command);
+private:
+    Contact _contacts[8];
+    int _index;
 };
 
-
+#endif
