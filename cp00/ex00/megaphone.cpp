@@ -6,12 +6,13 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 13:43:00 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/14 14:48:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:14:05 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <cctype>
 
 int main(int argc, char **argv) 
 {
@@ -22,10 +23,7 @@ int main(int argc, char **argv)
             std::string txt = argv[i];
             for (std::string::size_type j = 0; j < txt.size(); ++j)
 			{
-                if (txt[j] >= 'a' && txt[j] <= 'z') 
-				{
-                    txt[j] = txt[j] - 'a' + 'A';
-                }
+                txt[j] = std::toupper(txt[j]);
             }
             std::cout << txt << " ";
         }
@@ -35,4 +33,3 @@ int main(int argc, char **argv)
     }
     return 0;
 }
-
