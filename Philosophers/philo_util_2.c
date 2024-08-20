@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:51:51 by whamdi            #+#    #+#             */
-/*   Updated: 2024/08/06 10:57:21 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:09:10 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	*ft_isdying(void *arg)
 				return (NULL);
 			data->i++;
 			if (isdying_box(data, data->philos) == 1)
+			{
+				printf("All the philos eatead %d times\n", data->eat_cycle);
 				return (NULL);
+			}
 		}
 		usleep(1000);
 	}
