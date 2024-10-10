@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:14:47 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/10 11:19:33 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/10 16:24:28 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void randomChump( std::string name )
 	z->name = name;
 	std::cout << z->name << " : ";
 	z->announce();
-
+	delete z;
 }
