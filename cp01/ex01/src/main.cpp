@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:26:46 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/10 10:29:57 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/10 20:36:00 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 int main(int argc, char **argv)
 {
+	(void) argc, (void) argv;
+	std::string name = "test"; 
 	int proto = 3;
-	char *protoName = "yooo";
 
-	zombieHorde(proto, protoName);
+	zombieHorde(proto, name);
 	return(0);
 }
