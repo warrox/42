@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 11:04:10 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/10 11:31:54 by whamdi           ###   ########.fr       */
+/*   Created: 2024/10/10 10:26:46 by whamdi            #+#    #+#             */
+/*   Updated: 2024/10/10 10:29:57 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "../includes/Zombie.hpp"
 
 
-#include <iostream>
-#include <string>
-
-class Zombie
+int main(int argc, char **argv)
 {
+	int proto = 3;
+	char *protoName = "yooo";
 
-public : 
-	std::string name;
-	void announce(void)
-	{
-		std::cout << "BraiiiiiiinnnzzzZ...\n";
-	}
-};
-
-void randomChump( std::string name );
-// Zombie* zombieHorde( int N, std::string name );
-#endif
+	zombieHorde(proto, protoName);
+	return(0);
+}
