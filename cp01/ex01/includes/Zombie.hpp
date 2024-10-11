@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:04:10 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/10 20:24:14 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/11 10:48:55 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ class Zombie
 {
 public : 
 	std::string name;
-	void announce(void)
-	{
-		std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
-	}
+	void announce(void);
 };
 
 void randomChump( std::string name );

@@ -1,5 +1,6 @@
 
 #include "../includes/Zombie.hpp"
+#include <cstdio>
 
 // class PhoneBook
 // {
@@ -17,9 +18,13 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-	Zombie* z = new Zombie[N];
+	Zombie* z = new Zombie[N];	
 	//init zombie name
-	for(int i = 0; i <= N; i++)
+	for(int i = 0; i != N; ++i)
+	{
+		printf("yo\n");
 		z[i].name = name;
+		z[i].announce();
+	}
 	return(z);
 }

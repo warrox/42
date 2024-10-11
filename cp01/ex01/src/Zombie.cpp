@@ -1,27 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/11 10:48:20 by whamdi            #+#    #+#             */
+/*   Updated: 2024/10/11 10:48:36 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/Zombie.hpp"
 
-// class PhoneBook
-// {
-// public:
-//     PhoneBook(void);
-//     ~PhoneBook(void);
-//     void add(int index);
-//     void search(void);
-// 	void display_specific_contact(std::string command);
-// private:
-//     Contact _contacts[8];
-//     int _index;
-// };
-
-
-// Zombie* zombieHorde( int N, std::string name )
-// {
-// 	for(int i = 0; i >= N; i++)
-// 	{
-// 		// create zombie horde
-//
-// 	}
-// }
-
+void Zombie::announce(void)
+{
+	std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
