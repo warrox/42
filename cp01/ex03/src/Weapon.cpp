@@ -4,12 +4,20 @@
 #include <iterator>
 #include <string>
 
-const std::string *getType(std::string &type)
+const std::string &Weapon::getType()
 {
-	return(&type);	
+	return this->_type;
 }
-std::string setType(std::string value)
+void Weapon::setType(const std::string &value)
 {
-	std::string type = value;
-	return(type); 
+	this->_type = value;
 }
+
+Weapon::Weapon(const std::string str){
+	this->setType(str);
+}
+
+Weapon::Weapon(){
+	this->setType("No Weapon");
+}
+Weapon::~Weapon(){};

@@ -1,15 +1,14 @@
-#include "HumanA.hpp"
+#include "HumanB.hpp"
 #include <iostream>
 #include <ostream>
 #include <cstdio>
-void HumanA::attack(void)
+void HumanB::attack(void)
 {
 	const std::string &weap = this->weapon.getType();
 	std::cout << this->name << " attacks with their "; 
 	std::cout << weap << std::endl;
 }
 
-HumanA::HumanA(const std::string &name, Weapon &weapon) {
+HumanB::HumanB(const std::string &name) {
 	this->name = name;
-	this->weapon = weapon;
 }

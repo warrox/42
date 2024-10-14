@@ -1,12 +1,12 @@
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 #include "../includes/Weapon.hpp"
 #include <string>
 #include <ostream>
-class HumanA
+class HumanB
 {
 	public :
-		HumanA(const std::string &name, Weapon &weapon);
+		HumanB(const std::string &name);
 		void	attack(void);	
 	private :
 		Weapon weapon;
