@@ -4,11 +4,13 @@
 #include <cstdio>
 void HumanB::attack(void)
 {
-	const std::string &weap = this->weapon.getType();
 	std::cout << this->name << " attacks with their "; 
-	std::cout << weap << std::endl;
-}
+	std::cout << this->weapon->getType() << std::endl;
 
+}
+void HumanB::setWeapon(Weapon &weapon){
+	this->weapon = &weapon;
+}
 HumanB::HumanB(const std::string &name) {
 	this->name = name;
 }

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:26:46 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/14 13:44:09 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/14 14:32:07 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,39 @@
 #include "HumanB.hpp"
 #include <cstdio>
 
-
-int main(int argc, char **argv)
+//
+// int main(int argc, char **argv)
+// {
+// 	Weapon weapon;
+// 	const std::string str = "Knife";
+// 	const std::string name = "Warren";
+// 	const std::string nameB = "Kirikou";
+// 	weapon.setType(str);
+// 	HumanA hmn(name,weapon);
+// 	HumanB hmnB(nameB);
+// 	hmn.attack();
+// 	hmnB.attack();
+// 	(void) argc, (void) argv;
+//
+// 	return(0);
+// }
+//
+int main()
 {
-	Weapon weapon;
-	const std::string str = "Knife";
-	const std::string name = "Warren";
-	const std::string nameB = "Kirikou";
-	weapon.setType(str);
-	HumanA hmn(name,weapon);
-	HumanB hmnB(nameB);
-	hmn.attack();
-	hmnB.attack();
-	(void) argc, (void) argv;
-
-	return(0);
+{
+Weapon club = Weapon("crude spiked club");
+HumanA bob("Bob", club);
+bob.attack();
+club.setType("some other type of club");
+bob.attack();
+}
+{
+Weapon club = Weapon("crude spiked club");
+HumanB jim("Jim");
+jim.setWeapon(club);
+jim.attack();
+club.setType("some other type of club");
+jim.attack();
+}
+return 0;
 }
