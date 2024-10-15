@@ -67,7 +67,11 @@ int main(int argc, char **argv)
     std::string filename = argv[1];
     std::string str1 = argv[2];
     std::string str2 = argv[3];
-
+	if(argv[2][0] == 0|| argv[3] == NULL)
+	{
+		std::cerr << "<arg1> or <arg2> is null" << std::endl;
+		return(-1);
+	}
     sed4looser(filename, str1, str2);
 
     return 0;
