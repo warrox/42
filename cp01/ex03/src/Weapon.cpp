@@ -20,4 +20,4 @@ Weapon::Weapon(const std::string str){
 Weapon::Weapon(){
 	this->setType("No Weapon");
 }
-Weapon::~Weapon(){};
+Weapon::~Weapon(){}
