@@ -6,11 +6,11 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:26:46 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/11 15:16:37 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:43:19 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include <iostream>
 #include <cstdio>
 #include <iterator>
 #include <string>
