@@ -6,13 +6,13 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:30:26 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/16 13:40:16 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/18 15:03:38 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Harl.hpp"
 int main(void){
 	Harl h;
-	h.complain("INFO");
+	h.complain("DEBUG");
 	return(0);
 }

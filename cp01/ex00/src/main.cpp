@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:21:26 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/11 10:55:30 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/18 14:16:37 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include <ostream>
 int main(void)
 {
-	Zombie *z;
-	randomChump("Servietsky");	
-	z = newZombie("YO");
-	std::cout << z->name << std::endl;
-	delete z;
+	Zombie z("Dark vador");
+	z.announce();
+	randomChump("Servietsky");
 	return(0);
 }

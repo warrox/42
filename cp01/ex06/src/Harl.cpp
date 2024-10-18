@@ -6,11 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:50:30 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/16 15:01:38 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/18 15:05:55 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Harl.hpp"
+#include <cstdio>
 #include <iostream>
 #include <sys/cdefs.h>
 
@@ -35,25 +36,35 @@ void Harl::debug(void)
 typedef void (Harl::*alert)(void);
 #define ARRAY_SIZE(arr) sizeof(arr) / sizeof(arr[0])
 
-void Harl::complain(std::string level )
+void Harl::complain(std::string level)
 {
-	static const struct {
-		std::string level;
-		alert func;
-	} map[] = {
-		{"DEBUG", &Harl::debug },
-		{"INFO", &Harl::info },
-		{"WARNING", &Harl::warning },
-		{"ERROR", &Harl::error },
-	};
+    alert funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+    std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-	for (size_t i = 0; i < ARRAY_SIZE(map); i++) {
-		if (level == map[i].level) {
-			while (i < ARRAY_SIZE(map)) {
-				(this->*map[i++].func)();
-			}
-		}
-	}
+    int level_index = -1;
+    for (int i = 0; i < 4; i++) {
+        if (levels[i] == level) {
+            level_index = i;
+            break;
+        }
+    }
+
+    switch (level_index) {
+		case 0:
+			(this->*funcs[0])();
+        case 1:
+            (this->*funcs[1])();
+        case 2:
+            (this->*funcs[2])();
+        case 3:
+            (this->*funcs[3])();
+            break;
+        default:
+            std::cout << "Invalid log level!" << std::endl;
+    }
 }
 Harl::Harl(){};
 Harl::~Harl(){};
+//---------------------
+
+
