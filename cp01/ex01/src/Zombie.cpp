@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:48:20 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/29 14:06:40 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:57:57 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void Zombie::announce(void)
 	std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie::Zombie(){};
+Zombie::Zombie(){
+	return ;
+};
+
 Zombie::~Zombie()
 {
 	std::cout << "Destructor called"<< std::endl;
