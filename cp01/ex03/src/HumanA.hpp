@@ -11,6 +11,6 @@ class HumanA
 		~HumanA();
 	private :
 		Weapon *weapon;
-		std::string name;
+		std::string _name;
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:26:46 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/29 12:08:39 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:05:07 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int main(int argc, char **argv)
     std::string name = argv[2];
 
     Zombie *z = zombieHorde(n, name);
-    
+	for(int i = 0; i < n; i++)
+	{
+		z[i].announce();
+	}    
     delete [] z;
     return 0;
 }

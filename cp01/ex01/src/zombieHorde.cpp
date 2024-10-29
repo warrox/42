@@ -3,15 +3,18 @@
 #include <cstdio>
 #include <iterator>
 
+
+void Zombie::set_name(std::string name)
+{
+	this->_name = name;
+}
 Zombie* zombieHorde( int N, std::string name )
 {
 	Zombie* z = new Zombie[N];	
 	//init zombie name
 	for(int i = 0; i != N; ++i)
 	{
-		z[i].name = name;
-		std::cout << z[i].name << std::endl;
-		z[i].announce();
+		z[i].set_name(name);
 	}
 	return(z);
 }
