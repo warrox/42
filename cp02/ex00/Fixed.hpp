@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:38:03 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/16 15:39:25 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/30 11:19:44 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 #define FIXED_HPP
 
 
-class T
+class Fixed
 {
-    public:
-        T (); // Constructeur par défaut
-        T (const T&); // Constructeur de recopie
-        ~T (); // Destructeur éventuellement virtuel
-        T &operator=(const T&); // Operator d'affectation
+private :
+		int _value;
+		static const int _fractional_b;
+	public:
+        Fixed (int v) : _value(v){}; // Constructeur par défaut
+        Fixed (const Fixed&); // Constructeur de recopie
+        ~Fixed (); // Destructeur éventuellement virtuel
+		Fixed &operator=(const Fixed&); // Operator d'affectation
 };
 #endif // !DEBUG
