@@ -1,5 +1,5 @@
-#include "Fixed.hpp"
-
+#include "../includes/Fixed.hpp"
+#include <iostream>
 
 int main(void)
 {
