@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:38:03 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/31 11:45:06 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/10/31 13:16:04 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #define FIXED_HPP
 
 #include <cmath>
+#include <iostream>
 class Fixed
 {
 private :
@@ -31,4 +32,5 @@ private :
 		int    toInt(void) const;
         ~Fixed ();
 };
+std::ostream &operator<<(std::ostream &o, const Fixed &fixed);
 #endif
