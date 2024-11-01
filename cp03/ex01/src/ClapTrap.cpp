@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:25:24 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 14:25:18 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/01 15:14:39 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "Constructor called" << std::endl;
 	this->_name = name;
-	this->_HitPoints = 10;
-	this->_EnergyPoints = 10;
-	this->_AttackDamage = 0;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 50;
+	this->_AttackDamage = 20;
 }
 ClapTrap::~ClapTrap()
 {
