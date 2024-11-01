@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:39:52 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 10:39:54 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/01 11:04:44 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static float area (const Point p1, const Point p2, const Point p3)
 {
 	float	area;
 
-	//Area A = [ x1(y2 – y3) + x2(y3 – y1) + x3(y1-y2)]/2
 	area =	(
 			( p1.getX().toFloat() * ( p2.getY().toFloat() - p3.getY().toFloat() ) )
 			+ ( p2.getX().toFloat() * ( p3.getY().toFloat() - p1.getY().toFloat() ) )

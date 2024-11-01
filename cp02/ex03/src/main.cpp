@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 13:17:53 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 10:29:28 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/01 11:06:50 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,10 @@ int main(void)
 	const Point c(0, 10);
 	const Point point(1, 1);
 
-	std::cout << "The point( x= " << point.getX() << "\t\ty= " << point.getY() << "\t) is inside the triangle\n" <<
-	"\ta( x= " << a.getX() << "\t\ty= " << a.getY() << "\t)\n" <<
-	"\tb( x= " << b.getX() << "\ty= " << b.getY() << "\t)\n" <<
-	"\tc( x= " << c.getX() << "\t\ty= " << c.getY() << "\t)\n" << std::endl;
 	if (bsp(a, b, c, point) == true)
-		std::cout << "\033[32mTRUE\033[0m" << std::endl;
+		std::cout << "TRUE" << std::endl;
 	else
-		std::cout << "\033[31mFALSE\033[0m" << std::endl;
+		std::cout << "FALSE" << std::endl;
 	}
 	std::cout << "\n---------------------------------------------------------------------\n" << std::endl;
 	{
@@ -39,14 +35,10 @@ int main(void)
 	Point c(-1, -2);
 	Point point(8.5, -9);
 
-	std::cout << "The point( x= " << point.getX() << "\ty= " << point.getY() << "\t) is inside the triangle\n" <<
-	"\ta( x= " << a.getX() << "\ty= " << a.getY() << "\t)\n" <<
-	"\tb( x= " << b.getX() << "\ty= " << b.getY() << "\t)\n" <<
-	"\tc( x= " << c.getX() << "\ty= " << c.getY() << "\t)\n" << std::endl;
 	if (bsp(a, b, c, point) == true)
-		std::cout << "\033[32mTRUE\033[0m" << std::endl;
+		std::cout << "TRUE" << std::endl;
 	else
-		std::cout << "\033[31mFALSE\033[0m" << std::endl;
+		std::cout << "FALSE" << std::endl;
 	}
 	return (0);
 }
