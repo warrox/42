@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:38:03 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/30 17:19:34 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/01 09:53:43 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ private :
 		static const int _fractional_b;
 	public:
 		int getRawBits(void)const;
-        Fixed (); // Constructeur par défaut
-        Fixed (const Fixed&); // Constructeur de recopie
-		Fixed &operator=(const Fixed&); // Operator d'affectation
-        ~Fixed (); // Destructeur éventuellement virtuel
+		void setRawbits(int const raw);
+        Fixed ();
+        Fixed (const Fixed&);
+		Fixed &operator=(const Fixed&);
+        ~Fixed ();
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:09:25 by whamdi            #+#    #+#             */
-/*   Updated: 2024/10/31 13:24:37 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/01 10:07:11 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ int Fixed::getRawBits(void)const
 	return(this->_value);
 }
 
+void Fixed::setRawbits(int const raw)
+{
+	std::cout << "setRawBits member function called" << std::endl;
+	this->_value = raw;
+}
 float Fixed::toFloat(void)const
 {
 	return float(this->_value) / (1 << _fractional_b);
