@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:06:54 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 15:23:16 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/04 20:09:36 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScapTrap::ScapTrap(): ClapTrap("Scap's parent") 
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "Constructor called for ScavTrap" << std::endl;
 }
 
 ScapTrap::~ScapTrap()
