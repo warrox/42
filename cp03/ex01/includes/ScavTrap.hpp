@@ -6,18 +6,25 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:36:46 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 15:04:04 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/05 16:38:14 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-class ScapTrap : public ClapTrap
+class ScavTrap : public ClapTrap
 {
-	
+	protected :
+		std::string _name;
+		int _HitPoints;
+		int _EnergyPoints;
+		int _AttackDamage;
+
 	public :	
 		void guardGate();	
-		ScapTrap();
-		~ScapTrap();
+		ScavTrap(std::string name);
+		ScavTrap();
+		void attack(const std::string& target);
+		~ScavTrap();
 };

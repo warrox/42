@@ -6,18 +6,16 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:58:57 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/05 13:56:21 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/05 17:14:56 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/FlagTrap.hpp"
+#include "../includes/FragTrap.hpp"
 
 int main(void)
 {
-	FlagTrap r;
-	r.attack("baba");
-	r.beRepaired(10);
-	r.takeDamage(5);
-	r.highFivesGuy();
+	FragTrap r("bob");
+	r.highFivesGuys();
+	r.attack("Marcel");
 	return(0);
 }

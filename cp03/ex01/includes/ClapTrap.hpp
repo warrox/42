@@ -6,14 +6,14 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:42:53 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/01 11:58:33 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/05 15:17:58 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 class ClapTrap
 {
-	private :
+	protected :
 		std::string _name;
 		int _HitPoints;
 		int _EnergyPoints;
@@ -22,6 +22,9 @@ class ClapTrap
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+		ClapTrap();
 		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap&);
+		ClapTrap &operator=(const ClapTrap&);
 		~ClapTrap();
 };

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 15:06:54 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/05 13:56:44 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/01 14:36:46 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/05 16:52:26 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/FlagTrap.hpp"
 
-FlagTrap::FlagTrap(): ClapTrap("Scap's parent") 
+#include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
-	std::cout << "Constructor called for FlagTrap" << std::endl;
-}
+	protected :
+		std::string _name;
+		int _HitPoints;
+		int _EnergyPoints;
+		int _AttackDamage;
 
-FlagTrap::~FlagTrap()
-{
-	std::cout << "Destroy FlagTrap" << std::endl;
-}
-
-void FlagTrap::highFivesGuy()
-{
-	std::cout << "FlagTrap :  Do you want a High Five bro ? " << std::endl;
-}
-
+	public :	
+		void guardGate();	
+		ScavTrap(std::string name);
+		ScavTrap();
+		ScavTrap(const ScavTrap &);
+		ScavTrap &operator=(const ScavTrap&);
+		void attack(const std::string& target);
+		~ScavTrap();
+};

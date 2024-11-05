@@ -6,9 +6,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 SRC_DIR = src
 INCLUDE_DIR = includes
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/ClapTrap.cpp $(SRC_DIR)/FlagTrap.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/ClapTrap.cpp $(SRC_DIR)/ScavTrap.cpp $(SRC_DIR)/FragTrap.cpp
 
-INCLUDES = $(INCLUDE_DIR)/FlagTrap.hpp $(INCLUDE_DIR)/flagTrap.hpp
+INCLUDES = $(INCLUDE_DIR)/ScavTrap.hpp $(INCLUDE_DIR)/ClapTrap.hpp $(INCLUDE_DIR)/FragTrap.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
