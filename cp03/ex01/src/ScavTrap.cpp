@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:06:54 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/04 20:09:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/05 13:41:55 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ ScapTrap::~ScapTrap()
 
 void ScapTrap::guardGate()
 {
-	std::cout << " ScavTrap is now in Gate keeper mode." << std::endl;
+	std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
 }
 

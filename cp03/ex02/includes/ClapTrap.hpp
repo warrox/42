@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 11:58:57 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/05 13:41:35 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/01 10:42:53 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/01 11:58:33 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScavTrap.hpp"
-
-int main(void)
+#include <iostream>
+class ClapTrap
 {
-	ScapTrap r;
-	r.attack("baba");
-	r.beRepaired(10);
-	r.takeDamage(5);
-	r.guardGate();
-	return(0);
-}
+	private :
+		std::string _name;
+		int _HitPoints;
+		int _EnergyPoints;
+		int _AttackDamage;
+	public :
+		void attack(const std::string& target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
+		ClapTrap(std::string name);
+		~ClapTrap();
+};
