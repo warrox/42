@@ -6,11 +6,14 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 SRC_DIR = src
 INCLUDE_DIR = includes
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Dog.cpp $(SRC_DIR)/Cat.cpp $(SRC_DIR)/Animal.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Dog.cpp $(SRC_DIR)/Cat.cpp $(SRC_DIR)/Animal.cpp $(SRC_DIR)/WrongAnimal.cpp  $(SRC_DIR)/WrongCat.cpp
+
+
+INCLUDES = $(INCLUDE_DIR)/Animal.hpp $(INCLUDE_DIR)/Cat.hpp $(INCLUDE_DIR)/Dog.hpp $(INCLUDE_DIR)/WrongAnimal.hpp $(INCLUDE_DIR)/WrongCat.hpp
 
 
 
-INCLUDES = $(INCLUDE_DIR)/Animal.hpp $(INCLUDE_DIR)/Cat.hpp $(INCLUDE_DIR)/Dog.hpp
+
 
 
 OBJ = $(SRC:.cpp=.o)
