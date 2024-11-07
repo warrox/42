@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 11:20:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:18 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/07 14:46:17 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
-#pragma once
-#include "Animal.hpp"
-class Dog : public Animal 
+#include "../includes/Cat.hpp"
+
+Cat::Cat() 
 {
-	protected :
+	this->_type = "Cat";
+}
 
-	public:
-		Dog();
-		Dog(Dog&);
-		~Dog();
-		Dog& operator=(Dog &);
-		virtual void makeSound()const;
-};
+Cat::Cat(Cat &other)
+{
+	*this = other;
+}
 
-#endif // !DEBUG
+Cat::~Cat()
+{
+	std::cout << "Cat  destroyed" << std::endl;
+}
+
+Cat&  Cat::operator=(Cat &other)
+{
+	if(this != &other){
+		this->_type = other._type;
+	}
+	return(*this);
+}
+void Cat::makeSound() const
+{
+	std::cout << "Meow Meow ..." << std::endl;
+}

@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 15:01:27 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/07 13:18:21 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/07 14:34:53 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Animal.hpp"
-#include <iostream>
-#include "../includes/Cat.hpp"
-#include "../includes/Dog.hpp"
-int main(void)
+
+	Animal::Animal() : _type("Animal")
 {
-	std::cout << "Hello World" << std::endl;	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	return (0);
+	
+}
+Animal::Animal(Animal &other)
+{
+	*this = other;
+}
+
+Animal::~Animal()
+{
+	std::cout << "Animal  destroyed" << std::endl;
+}
+
+Animal&  Animal::operator=(Animal &other)
+{
+	if(this != &other){
+		this->_type = other._type;
+	}
+	return(*this);
+}
+
+void Animal::makeSound()const
+{
+	std::cout << "Sound of an animal ..." << std::endl;
+}
+
+std::string Animal::getType()const
+{
+	return(this->_type);
 }

@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 11:20:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:18 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/07 14:45:25 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
-#pragma once
-#include "Animal.hpp"
-class Dog : public Animal 
+#include "../includes/Dog.hpp"
+
+Dog::Dog() 
 {
-	protected :
+	this->_type = "Dog";
+}
 
-	public:
-		Dog();
-		Dog(Dog&);
-		~Dog();
-		Dog& operator=(Dog &);
-		virtual void makeSound()const;
-};
+Dog::Dog(Dog &other)
+{
+	*this = other;
+}
 
-#endif // !DEBUG
+Dog::~Dog()
+{
+	std::cout << "Dog  destroyed" << std::endl;
+}
+
+Dog&  Dog::operator=(Dog &other)
+{
+	if(this != &other){
+		this->_type = other._type;
+	}
+	return(*this);
+}
+
+void Dog::makeSound()const
+{
+	std::cout << "Barkle Barkle ..." << std::endl;
+}
