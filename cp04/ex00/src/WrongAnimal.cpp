@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:54:39 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 16:55:10 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/07 20:25:49 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ WrongAnimal&  WrongAnimal::operator=(WrongAnimal &other)
 
 void WrongAnimal::makeSound()const
 {
-	std::cout << "Sound of an fake animal ..." << std::endl;
+	std::cout << "Sound of a fake animal ..." << std::endl;
 }
 
 std::string WrongAnimal::getType()const
