@@ -6,12 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 15:45:38 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 16:20:48 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cat.hpp"
-
+#include "../includes/colors.hpp"
 Cat::Cat() 
 {
 	this->_type = "Cat";
@@ -28,7 +28,7 @@ Cat::Cat(Cat &other)
 
 Cat::~Cat()
 {
-	std::cout << "Cat  destroyed" << std::endl;
+	std::cout << GREEN << "Cat  destroyed" << RESET << std::endl;
 	delete this->b;
 }
 

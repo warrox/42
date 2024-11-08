@@ -9,7 +9,7 @@ INCLUDE_DIR = includes
 SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Dog.cpp $(SRC_DIR)/Cat.cpp $(SRC_DIR)/Animal.cpp $(SRC_DIR)/WrongAnimal.cpp  $(SRC_DIR)/WrongCat.cpp $(SRC_DIR)/Brain.cpp
 
 
-INCLUDES = $(INCLUDE_DIR)/Animal.hpp $(INCLUDE_DIR)/Cat.hpp $(INCLUDE_DIR)/Dog.hpp $(INCLUDE_DIR)/WrongAnimal.hpp $(INCLUDE_DIR)/WrongCat.hpp $(INCLUDE_DIR)/Brain.hpp
+INCLUDES = $(INCLUDE_DIR)/Animal.hpp $(INCLUDE_DIR)/Cat.hpp $(INCLUDE_DIR)/Dog.hpp $(INCLUDE_DIR)/WrongAnimal.hpp $(INCLUDE_DIR)/WrongCat.hpp $(INCLUDE_DIR)/Brain.hpp $(INCLUDE_DIR)/colors.hpp
 
 
 

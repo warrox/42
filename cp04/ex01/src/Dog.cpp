@@ -6,12 +6,12 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 13:01:04 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 16:20:26 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
-
+#include "../includes/colors.hpp"
 Dog::Dog() 
 {
 	this->_type = "Dog";
@@ -26,7 +26,7 @@ Dog::Dog(Dog &other)
 
 Dog::~Dog()
 {
-	std::cout << "Dog  destroyed" << std::endl;
+	std::cout << GREEN << "Dog  destroyed" << RESET <<  std::endl;
 	delete b;
 }
 
