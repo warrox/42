@@ -6,16 +6,16 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:22:06 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:17:33 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 16:49:54 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 #define CAT_HPP
 #pragma once
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
-class Cat : public Animal 
+class Cat : public AAnimal 
 {
 	private :
 		Brain *b;

@@ -6,27 +6,27 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:18:21 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:46:29 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 16:50:11 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/AAnimal.hpp"
 
-	Animal::Animal() : _type("Animal")
+	AAnimal::AAnimal() : _type("AAnimal")
 {
 	
 }
-Animal::Animal(Animal &other)
+AAnimal::AAnimal(AAnimal &other)
 {
 	*this = other;
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	std::cout << "Animal  destroyed" << std::endl;
+	std::cout << "AAnimal  destroyed" << std::endl;
 }
 
-Animal&  Animal::operator=(Animal &other)
+AAnimal&  AAnimal::operator=(AAnimal &other)
 {
 	if(this != &other){
 		this->_type = other._type;
@@ -34,12 +34,12 @@ Animal&  Animal::operator=(Animal &other)
 	return(*this);
 }
 
-void Animal::makeSound()const
+void AAnimal::makeSound()const
 {
 	std::cout << "Sound of an animal ..." << std::endl;
 }
 
-std::string Animal::getType()const
+std::string AAnimal::getType()const
 {
 	return(this->_type);
 }
