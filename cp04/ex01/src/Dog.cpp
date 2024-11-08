@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 14:45:25 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:01:04 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 Dog::Dog() 
 {
 	this->_type = "Dog";
+	this->b = new Brain();
 }
 
 Dog::Dog(Dog &other)
 {
-	*this = other;
+	this->b = new Brain;
+	*this->b = *(other.b);
 }
 
 Dog::~Dog()
 {
 	std::cout << "Dog  destroyed" << std::endl;
+	delete b;
 }
 
 Dog&  Dog::operator=(Dog &other)

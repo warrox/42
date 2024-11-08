@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 14:46:17 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 12:59:28 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 Cat::Cat() 
 {
 	this->_type = "Cat";
+	this->b = new Brain();
 }
 
 Cat::Cat(Cat &other)
 {
-	*this = other;
+	this->b = new Brain();
+	*this->b = *(other.b);
+
+
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat  destroyed" << std::endl;
+	delete this->b;
 }
 
 Cat&  Cat::operator=(Cat &other)

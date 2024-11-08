@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:20:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:18 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:31:29 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #define DOG_HPP
 #pragma once
 #include "Animal.hpp"
+#include "Brain.hpp"
 class Dog : public Animal 
 {
-	protected :
+	private :
+		Brain *b;
 
 	public:
 		Dog();

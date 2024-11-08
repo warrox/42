@@ -1,11 +1,11 @@
 
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
-#include <vector>
+#include "Animal.hpp"
 #include <iostream> 
 class Brain{
 	protected:
-		std::vector<std::string> _ideas[100];
+		Animal * _ideas;
 	public : 
 		Brain();
 		Brain(Brain &);

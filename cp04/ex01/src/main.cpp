@@ -6,32 +6,38 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 16:56:40 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 13:16:32 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Animal.hpp"
+#include <cstdio>
 #include <iostream>
 #include "../includes/Cat.hpp"
 #include "../includes/Dog.hpp"
-#include "../includes/WrongAnimal.hpp"
-#include "../includes/WrongCat.hpp"
-int main(void)
+// int main(void)
+// {
+// 	Animal *a[100];
+// 	for(int i = 0; i <= 100; i++)
+// 	{
+// 		a[i] = new Dog;
+// 		if(i == 100)
+// 			break;
+// 		a[i + 1] = new Cat;
+// 		printf("i : %d\n", i);
+// 		
+// 		printf("i + 1  : %d\n", i + 1);
+// 	}
+// 	for (int i = 0; i < 100; i++)
+// 	{
+// 		delete a[i];
+// 	}
+// }
+int main()
 {
-	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	const WrongAnimal *wrongMeta = new WrongCat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << wrongMeta->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	wrongMeta->makeSound();
-	delete meta;
-	delete j;
+	delete j;//should not create a leak
 	delete i;
-	delete wrongMeta;
-	return (0);
+	return(0);
 }

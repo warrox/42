@@ -15,7 +15,11 @@ Brain& Brain::operator=(Brain &other)
 {
 	if(this != &other)
 	{
-		this->_ideas[100] = other._ideas[100];	
+		this->_ideas = new Animal;
+		for(int i = 0; i <= 100;i++)
+		{
+			this->_ideas[i] = other._ideas[i];
+		}
 	}
 	return(*this);
 }
@@ -23,4 +27,5 @@ Brain& Brain::operator=(Brain &other)
 Brain::~Brain()
 {
 	std::cout<<"Brain Destructor called"<<std::endl;
+	delete this->_ideas;
 }
