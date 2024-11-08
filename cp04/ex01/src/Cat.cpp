@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 12:59:28 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:45:38 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,20 @@ Cat&  Cat::operator=(Cat &other)
 void Cat::makeSound() const
 {
 	std::cout << "Meow Meow ..." << std::endl;
+}
+
+void Cat::addIdea(std::string idea)
+{
+	static int index = 0;
+	if (index >= 0 && index < 100) {
+        this->b->_ideas[index] = idea;	
+	}
+}
+std::string Cat::getIdea()
+{
+	return(this->b->_ideas[0]);
+}
+std::ostream &operator<<(std::ostream &ostream, Cat &self) {
+	ostream << self.getIdea();
+	return ostream;
 }
