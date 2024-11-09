@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:20:26 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/09 09:19:06 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog()
 	this->b = new Brain();
 }
 
-Dog::Dog(Dog &other)
+Dog::Dog(Dog &other) : Animal(other)
 {
 	this->b = new Brain;
 	*this->b = *(other.b);

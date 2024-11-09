@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:13:44 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/09 09:46:23 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ int main()
 	copy = *i;
 	
 	i->addIdea("Dumb");
+	std::cout << RED<< "I deleted :" << i->getIdea() <<RESET<< std::endl;
+	std::cout << RED<< "copy InSIDE :" << copy.getIdea() <<RESET<< std::endl;
 	delete j;//should not create a leak
 	delete i;
+
 	std::cout << RED<< "Brain :" << copy.getType() <<RESET<< std::endl;
 	std::cout << "Brain :" << copy.getIdea() << std::endl;
 	copy.addIdea("Dumb");

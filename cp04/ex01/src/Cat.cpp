@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:20:48 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/09 09:17:59 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat()
 	this->b = new Brain();
 }
 
-Cat::Cat(Cat &other)
+Cat::Cat(Cat &other) : Animal(other)
 {
 	this->b = new Brain();
 	*this->b = *(other.b);

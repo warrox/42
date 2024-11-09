@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:36:35 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 10:33:17 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/09 09:18:42 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ WrongCat::WrongCat()
 	this->_type = "WrongCat";
 }
 
-WrongCat::WrongCat(WrongCat &other)
+WrongCat::WrongCat(WrongCat &other) : WrongAnimal(other)
 {
 	*this = other;
 }
