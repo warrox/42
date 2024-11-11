@@ -18,4 +18,5 @@ AMateria::~AMateria()
 {
 	std::cout << "Desctructor AMateria called" << std::endl;
 }
-//add memebr function clone / use
+
+

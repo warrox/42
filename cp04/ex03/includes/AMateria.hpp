@@ -1,6 +1,9 @@
 
+#pragma once
+#ifndef AMATERIA_HPP
+#define AMATERIA_HPP
+#include "ICharacter.hpp"
 #include <iostream>
-
 class AMateria
 {
 	protected:
@@ -15,3 +18,4 @@ class AMateria
 		~AMateria();
 		
 };
+#endif // !AMATERIA_HPP
