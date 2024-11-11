@@ -13,6 +13,7 @@ AMateria::AMateria(AMateria &other)
 AMateria& AMateria::operator=(AMateria &other)
 {
 	//copy
+	return(*this = other);
 }
 AMateria::~AMateria()
 {

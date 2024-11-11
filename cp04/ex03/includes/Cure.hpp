@@ -2,6 +2,7 @@
 #ifndef CURE_HPP
 #define CURE_HPP
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Cure : public AMateria
 {
@@ -13,5 +14,6 @@ class Cure : public AMateria
 		Cure(const Cure &);
 		Cure & operator=(Cure &);
 		virtual AMateria * clone()const;
+		virtual void use(ICharacter& target); 
 };
 #endif 

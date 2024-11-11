@@ -15,7 +15,6 @@ class AMateria
 		virtual void use(ICharacter& target);
 		AMateria(AMateria&);
 		AMateria & operator=(AMateria&);
-		~AMateria();
-		
+		~AMateria();	
 };
 #endif // !AMATERIA_HPP
