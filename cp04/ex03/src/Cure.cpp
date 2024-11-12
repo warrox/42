@@ -1,28 +1,48 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 14:43:15 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/12 15:11:04 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/Cure.hpp"
 
-Cure::Cure() : AMateria("cure")
+Cure::Cure()
 {
-	std::cout << "Cure constructor called" << std::endl;
+    std::cout << "Cure constructor called" << std::endl;
+    this->_type = "cure";
+}
+Cure::~Cure()
+{
+	std::cout << "Desctructor called" << std::endl;
 }
 
-Cure::Cure(const Cure &other) : AMateria("cure")
+Cure::Cure(const Cure &other)
 {
-	this = other;
+    *this = other;
 }
 
-Cure& Cure::operator=(Cure &other)
+Cure& Cure::operator=(const Cure &other)
 {
-
+    if (this != &other)
+    {
+        this->_type = other._type;
+    }
+    return *this;
 }
 
-AMateria* Cure::clone()const 
+AMateria* Cure::clone() const
 {
-	return(new Cure(*this));
+    return (new Cure(*this));
 }
 
 void Cure::use(ICharacter & target)
 {
-
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
+

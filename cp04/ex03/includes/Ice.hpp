@@ -11,10 +11,10 @@ class Ice : public AMateria
 		std::string _type;	
 	public:
 		Ice();
-		~Ice();
 		Ice(const Ice &);
-		Ice & operator=(Ice &);
-		virtual AMateria* clone() const;
+		Ice & operator=(const Ice &);
+		AMateria* clone() const;
 		void use(ICharacter &);
+		~Ice();
 };
 #endif // !ICE_HPP
