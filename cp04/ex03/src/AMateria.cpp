@@ -1,4 +1,5 @@
 #include "../includes/AMateria.hpp"
+#include <cstdio>
 
 AMateria::AMateria()
 {
@@ -14,7 +15,7 @@ AMateria& AMateria::operator=(AMateria &other)
 {
 	if (this != &other)
     {
-        
+		this->_type = other._type;
     }
     return *this;
 }
@@ -25,5 +26,11 @@ AMateria::~AMateria()
 
 void AMateria::use(ICharacter& target) {
     std::cout << "AMateria used on " << target.getName() << std::endl;
+}
+
+
+std::string const & AMateria::getType() const
+{
+	return(this->_type);
 }
 

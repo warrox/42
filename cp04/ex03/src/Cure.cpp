@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:43:15 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/12 15:11:04 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/13 18:54:23 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cure::Cure()
 }
 Cure::~Cure()
 {
-	std::cout << "Desctructor called" << std::endl;
+	std::cout << "Cure Desctructor called" << std::endl;
 }
 
 Cure::Cure(const Cure &other)

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/09 09:17:59 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:19:00 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Cat&  Cat::operator=(Cat &other)
 {
 	if(this != &other){
 		this->_type = other._type;
+		this->b->_ideas[0] = other.b->_ideas[0]; 
 	}
 	return(*this);
 }

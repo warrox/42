@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:20:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/12 16:39:53 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/13 10:07:09 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
-
+#include "AMateria.hpp"
 class Character : public ICharacter
 {
 	protected:
 		std::string _type;	
 	public:
 		
+		AMateria *_inventory[3];			
 		Character();
 		Character(std::string type);
 		Character(const Character &);
@@ -32,4 +33,5 @@ class Character : public ICharacter
 		void use(int idx, ICharacter& target);
 		~Character();
 };
+std::ostream& operator<<(std::ostream& os, const Character& value);
 #endif // !CHARACTER_HPP

@@ -1,15 +1,14 @@
-NAME = MATERIAL
+NAME = WorldOf42
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CFLAGS = -std=c++98 -g3
 
 SRC_DIR = src
 INCLUDE_DIR = includes
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/AMateria.cpp $(SRC_DIR)/Cure.cpp $(SRC_DIR)/Ice.cpp $(SRC_DIR)/ICharacter.cpp $(SRC_DIR)/Character.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/AMateria.cpp $(SRC_DIR)/Cure.cpp $(SRC_DIR)/Ice.cpp $(SRC_DIR)/ICharacter.cpp $(SRC_DIR)/Character.cpp $(SRC_DIR)/MateriaSource.cpp
 
-
-INCLUDES = $(INCLUDE_DIR)/AMateria.hpp $(INCLUDE_DIR)/Cure.hpp $(INCLUDE_DIR)/Ice.hpp $(INCLUDE_DIR)/ICharacter.hpp $(INCLUDE_DIR)/Character.hpp
+INCLUDES = $(INCLUDE_DIR)/AMateria.hpp $(INCLUDE_DIR)/Cure.hpp $(INCLUDE_DIR)/Ice.hpp $(INCLUDE_DIR)/ICharacter.hpp $(INCLUDE_DIR)/Character.hpp $(INCLUDE_DIR)/MateriaSource.hpp
 
 
 
