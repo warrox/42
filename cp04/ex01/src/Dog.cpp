@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/09 09:19:06 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 10:53:18 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ Dog&  Dog::operator=(Dog &other)
 {
 	if(this != &other){
 		this->_type = other._type;
+		this->b = new Brain();
+		*this->b = *(other.b);
 	}
 	return(*this);
 }
