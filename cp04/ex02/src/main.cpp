@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/14 14:34:21 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 14:45:39 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int main()
 {
 	const AAnimal* j = new Dog();
+	// const AAnimal d;
 	Cat* i = new Cat();
 	Cat copy;
 
