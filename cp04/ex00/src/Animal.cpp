@@ -6,15 +6,15 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:18:21 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 14:34:53 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 11:30:13 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Animal.hpp"
 
-	Animal::Animal() : _type("Animal")
+Animal::Animal() : _type("Animal")
 {
-	
+	std::cout << "Animal constructor called" << std::endl;
 }
 Animal::Animal(Animal &other)
 {

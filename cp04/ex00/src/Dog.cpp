@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:38:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/07 14:45:25 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 11:31:52 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Dog::Dog() 
 {
 	this->_type = "Dog";
+	std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::Dog(Dog &other)
