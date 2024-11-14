@@ -1,7 +1,7 @@
 NAME = WorldOf42
 CC = c++
 
-CFLAGS = -std=c++98 -g3
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 SRC_DIR = src
 INCLUDE_DIR = includes
