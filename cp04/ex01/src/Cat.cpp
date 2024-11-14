@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:22:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/12 14:19:00 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 11:35:11 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Cat::Cat()
 {
 	this->_type = "Cat";
 	this->b = new Brain();
+	std::cout << "Cat constructor called" << std::endl;
 }
 
 Cat::Cat(Cat &other) : Animal(other)
