@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 14:40:49 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/14 14:40:55 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/Brain.hpp"
 
@@ -15,11 +26,8 @@ Brain& Brain::operator=(Brain &other)
 {
 	if(this != &other)
 	{
-		// this->_ideas = new Animal;
-		for(int i = 0; i <= 100;i++)
-		{
+		for(int i = 0; i < 100; i++)
 			this->_ideas[i] = other._ideas[i];
-		}
 	}
 	return(*this);
 }
@@ -27,5 +35,4 @@ Brain& Brain::operator=(Brain &other)
 Brain::~Brain()
 {
 	std::cout<<"Brain Destructor called"<<std::endl;
-	// delete this->_ideas;
 }

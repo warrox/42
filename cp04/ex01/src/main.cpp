@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/14 13:48:25 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 14:20:26 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int main()
 	// std::cout << RED<< "Brain of copy with I deleted :" << copy.getType() <<RESET<< std::endl;
 	std::cout << "Brain :" << copy.getIdea(0) << std::endl;
 	copy.addIdea("Testinn");
+	copy.addIdea("WANNA EAT");	
 	std::cout << copy << std::endl;
 	Cat test = copy;
 	std::cout << test << std::endl;
