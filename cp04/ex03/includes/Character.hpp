@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:20:58 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/13 10:07:09 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 13:51:38 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+
+#define INVENTORY_SIZE 4
+
 class Character : public ICharacter
 {
 	protected:
 		std::string _type;	
 	public:
 		
-		AMateria *_inventory[3];			
+		AMateria *_inventory[INVENTORY_SIZE];			
 		Character();
 		Character(std::string type);
 		Character(const Character &);

@@ -5,6 +5,8 @@
 #include "../includes/AMateria.hpp"
 #include "../includes/MateriaSource.hpp"
 #include "../includes/Cure.hpp"
+
+#define nullptr 0
 // int main()
 // {
 // 	Character c("Warren");
@@ -21,20 +23,23 @@
 // }
 int main()
 {
-IMateriaSource* src = new MateriaSource();
-src->learnMateria(new Ice());
-src->learnMateria(new Cure());
-ICharacter* me = new Character("me");
-AMateria* tmp;
-tmp = src->createMateria("ice");
-me->equip(tmp);
-tmp = src->createMateria("cure");
-me->equip(tmp);
-ICharacter* bob = new Character("bob");
-me->use(0, *bob);
-me->use(1, *bob);
-delete bob;
-delete me;
-delete src;
-return 0;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	delete tmp;
+	tmp = src->createMateria("brahim");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	void *ptr = 0;
+	ICharacter *test = (ICharacter *)ptr;
+	me->use(0, *test);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
 }

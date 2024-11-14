@@ -15,11 +15,8 @@ Brain& Brain::operator=(Brain &other)
 {
 	if(this != &other)
 	{
-		// this->_ideas = new Animal;
-		for(int i = 0; i <= 100;i++)
-		{
+		for(int i = 0; i < 100; i++)
 			this->_ideas[i] = other._ideas[i];
-		}
 	}
 	return(*this);
 }
