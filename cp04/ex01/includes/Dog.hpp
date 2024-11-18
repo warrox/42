@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:20:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:20:02 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 14:19:18 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ class Dog : public Animal
 		~Dog();
 		Dog& operator=(Dog &);
 		virtual void makeSound()const;
+		void addIdea(std::string);
+		std::string getIdea(size_t idx);
+
 };
 #endif // !DEBUG

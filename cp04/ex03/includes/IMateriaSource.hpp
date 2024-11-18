@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 14:40:49 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/14 14:40:55 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/13 13:59:30 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/13 14:42:15 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Brain.hpp"
-
-Brain::Brain()
+#pragma once
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+#include "AMateria.hpp"
+class AMateria;
+class IMateriaSource
 {
-	std::cout << "Brain Constructor called" << std::endl;
-}
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
-Brain::Brain(Brain &other)
-{	
-	*this = other;	
-}
-
-Brain& Brain::operator=(Brain &other)
-{
-	if(this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->_ideas[i] = other._ideas[i];
-	}
-	return(*this);
-}
-
-Brain::~Brain()
-{
-	std::cout<<"Brain Destructor called"<<std::endl;
-}
+#endif // !DEBUG

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:45 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/09 09:46:23 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 14:20:26 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,19 @@ int main()
 	Cat copy;
 
 	copy = *i;
-	
 	i->addIdea("Dumb");
-	std::cout << RED<< "I deleted :" << i->getIdea() <<RESET<< std::endl;
-	std::cout << RED<< "copy InSIDE :" << copy.getIdea() <<RESET<< std::endl;
+	
+	std::cout << RED<< "Idea of I :" << i->getIdea(0) <<RESET<< std::endl;
+	std::cout << RED<< "copy of I :" << copy.getIdea(0) <<RESET<< std::endl;
 	delete j;//should not create a leak
 	delete i;
 
-	std::cout << RED<< "Brain :" << copy.getType() <<RESET<< std::endl;
-	std::cout << "Brain :" << copy.getIdea() << std::endl;
-	copy.addIdea("Dumb");
-	std::cout << "Brain :" << copy.getIdea() << std::endl;
+	// std::cout << RED<< "Brain of copy with I deleted :" << copy.getType() <<RESET<< std::endl;
+	std::cout << "Brain :" << copy.getIdea(0) << std::endl;
+	copy.addIdea("Testinn");
+	copy.addIdea("WANNA EAT");	
+	std::cout << copy << std::endl;
+	Cat test = copy;
+	std::cout << test << std::endl;
 	return(0);
 }

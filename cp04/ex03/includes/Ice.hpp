@@ -8,13 +8,12 @@
 class Ice : public AMateria
 {
 	protected:
-		std::string _type;	
 	public:
 		Ice();
-		~Ice();
 		Ice(const Ice &);
-		Ice & operator=(Ice &);
-		virtual AMateria* clone() const;
-		void use(ICharacter &);
+		Ice & operator=(const Ice &);
+		AMateria* clone() const;
+		void use(ICharacter & target);
+		~Ice();
 };
 #endif // !ICE_HPP

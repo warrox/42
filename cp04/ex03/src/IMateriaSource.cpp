@@ -1,38 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 14:40:49 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/14 14:40:55 by whamdi           ###   ########.fr       */
+/*   Created: 2024/11/13 13:59:12 by whamdi            #+#    #+#             */
+/*   Updated: 2024/11/13 13:59:14 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Brain.hpp"
 
-Brain::Brain()
-{
-	std::cout << "Brain Constructor called" << std::endl;
-}
-
-Brain::Brain(Brain &other)
-{	
-	*this = other;	
-}
-
-Brain& Brain::operator=(Brain &other)
-{
-	if(this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->_ideas[i] = other._ideas[i];
-	}
-	return(*this);
-}
-
-Brain::~Brain()
-{
-	std::cout<<"Brain Destructor called"<<std::endl;
-}

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:18:21 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:46:29 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/11/14 11:34:41 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 	Animal::Animal() : _type("Animal")
 {
-	
+	std::cout << "Animal constructor called" << std::endl;
 }
 Animal::Animal(Animal &other)
 {
