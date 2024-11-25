@@ -18,13 +18,12 @@ class Bureaucrat
 		void decrement(void);	
 };
 
-class GradeTooHighException : public std::exception
-{
-	public :
-		const char *what() const throw();
+class GradeTooHighException:public std::exception{
+public:
+	const char *what() const throw();
 };
-class GradeTooLowException : public std::exception
-{
-	public :
-		const char *what() const throw();
+
+class GradeTooLowException:public std::exception{
+public:
+	const char *what() const throw();
 };
