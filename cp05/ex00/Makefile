@@ -9,7 +9,7 @@ INCLUDE_DIR = includes
 SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp
 
 
-INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp
+INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp $(INCLUDE_DIR)/Colors.hpp
 
 
 

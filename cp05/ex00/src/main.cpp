@@ -1,25 +1,27 @@
-//// C++ program to demonstate property 2: Implicit type
-/// conversion doesn't happen for primitive types.
-// in exception handling.
-
 #include <exception>
-#include <fstream>
 #include <iostream>
-#include <stdexcept>
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Colors.hpp"
 int main()
 {
-	Bureaucrat w("Warren", 1);
 	try {
+		// w.decrement();
 		Bureaucrat n("Nathan",151); 
+		std::cout << n << std::endl;
 		// Bureaucrat x("pd", 1221); 
     }
     catch(std::exception & e) {
 		std::cout << e.what() << std::endl;
     }
-	// try
-	// {
-	//
-	// }
+	try
+	{
+		Bureaucrat w("Warren", 1);
+		std::cout << w;
+		w.decrement();
+	}
+    catch(std::exception & e) {
+		std::cout << e.what() << std::endl;
+    }
+
    return 0;
 }
