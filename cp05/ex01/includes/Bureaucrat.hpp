@@ -18,15 +18,15 @@ class Bureaucrat
 		size_t getGrade(void)const;
 		void increment(void);	
 		void decrement(void);	
-		class GradeTooHighException:public std::exception{
-		public:
-			const char *what() const throw();
-		};
-
-		class GradeTooLowException:public std::exception{
-		public:
-			const char *what() const throw();
-		};
 };
 
+class GradeTooHighException:public std::exception{
+public:
+	const char *what() const throw();
+};
+
+class GradeTooLowException:public std::exception{
+public:
+	const char *what() const throw();
+};
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);

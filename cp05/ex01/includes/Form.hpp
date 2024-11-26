@@ -5,17 +5,20 @@
 #include <sstream>
 #include "Colors.hpp"
 typedef  std::string string;
-class Bureaucrat
+
+class Form
 {
 	private:
-		string _name;
-		size_t _grade;
+		string const _name;
+		bool _signed;
+		const size_t _gradeSigned;
+		const size_t _gradeExec;
 	public :
-		Bureaucrat();
-		Bureaucrat(string name, size_t grade);
-		~Bureaucrat();
-		string getName(void)const;
-		size_t getGrade(void)const;
+		Form();
+		Form(string name, size_t gradeS, size_t gradeE, bool oisigned);
+		~Form();
+		size_t getGradeSigned(void)const;
+		size_t getGradeExec(void)const;
 		void increment(void);	
 		void decrement(void);	
 		class GradeTooHighException:public std::exception{
@@ -29,4 +32,4 @@ class Bureaucrat
 		};
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
+std::ostream& operator<<(std::ostream& out, const Form& b);
