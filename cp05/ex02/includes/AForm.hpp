@@ -6,17 +6,19 @@
 #include "Colors.hpp"
 typedef  std::string string;
 class Bureaucrat;
-class Form
+class AForm
 {
-	private:
+	protected:
 		string const _name;
 		bool _signed;
 		const size_t _gradeSigned;
 		const size_t _gradeExec;
 	public :
-		Form();
-		Form(string name, size_t gradeS, size_t gradeE);
-		~Form();
+		AForm(string name, size_t gradeS, size_t gradeE);
+		virtual ~AForm();
+		AForm &operator=(AForm &);
+		AForm(AForm &);	
+
 		size_t getGradeSigned(void)const;
 		size_t getGradeExec(void)const;
 		string getName(void)const;
@@ -24,7 +26,9 @@ class Form
 		void increment(void);	
 		void decrement(void);	
 		void beSigned(Bureaucrat *employe);
-		void signForm(Bureaucrat *employee);
+		void signAForm(Bureaucrat *employee);
+		//Pure Method
+		virtual void execute(Bureaucrat const & executor)const = 0;
 		class GradeTooHighException:public std::exception{
 		public:
 			const char *what() const throw();
@@ -35,4 +39,4 @@ class Form
 		};
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& b);
+std::ostream& operator<<(std::ostream& out, const AForm& b);

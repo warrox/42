@@ -1,16 +1,17 @@
 
 #include <cstddef>
 #include <iostream>
-
+#include "../includes/Bureaucrat.hpp"
 #include "../includes/Form.hpp"
 // Form::Form()
 // {
 // 	// std::cout <<"Form created" << std::endl;
 // }
-Form::Form(string name, size_t gradeS, size_t gradeE, bool oisigned) : _name(name), _gradeSigned(gradeS), _gradeExec(gradeE), _signed(oisigned)
+Form::Form(string name, size_t gradeS, size_t gradeE) : _name(name), _gradeSigned(gradeS), _gradeExec(gradeE)
 {
 	// std::cout <<"Form created" << std::endl;
-		if(this->_gradeSigned < 1 || this->_gradeExec )
+	this->_signed = false;
+		if(this->_gradeSigned < 1 || this->_gradeExec < 1 )
 		{
 			throw (GradeTooHighException());
 		}
@@ -25,18 +26,7 @@ Form::~Form()
 {	
 	// std::cout <<"Form destroyed" << std::endl;
 }
-// void Form::increment(void)
-// {
-// 	this->_grade++;	
-// 	if(this->_grade > 150)
-// 		throw(GradeTooLowException());
-// }	
-// void Form::decrement(void)
-// {
-// 	this->_grade--;	
-// 	if(this->_grade < 1)
-// 		throw(GradeTooHighException());
-// }
+
 size_t Form::getGradeSigned(void)const
 {
 	return(this->_gradeSigned);
@@ -56,7 +46,30 @@ const char *Form::GradeTooLowException::what() const throw()
 	return("Grade too low");
 }
 
-// std::ostream& operator<<(std::ostream& out, const Form& b) {
-//     out << BLUE << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << RESET << std::endl;
-//     return out;
-// }
+bool    Form::getIsSigned(void)const
+{
+	return(this->_signed);
+}
+std::ostream& operator<<(std::ostream& out, const Form& b) {
+    out << BLUE << b.getName() << ", form grade " << b.getGradeSigned() << "." << RESET << std::endl;
+    return out;
+}
+
+void Form::beSigned(Bureaucrat *employee)
+{
+	if(employee->getGrade() <= this->getGradeSigned())
+	{
+		this->_signed = true;
+		
+	}
+	else
+	{
+		throw (GradeTooLowException());
+	}
+}
+
+
+string Form::getName(void)const
+{
+	return(this->_name);
+}

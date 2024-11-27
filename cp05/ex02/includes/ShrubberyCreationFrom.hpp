@@ -4,19 +4,16 @@
 #include <string>
 #include <sstream>
 #include "Colors.hpp"
+#include "AForm.hpp"
 typedef  std::string string;
 class Bureaucrat;
-class Form
+class ShrubberyCreationForm : public AForm
 {
-	private:
-		string const _name;
-		bool _signed;
-		const size_t _gradeSigned;
-		const size_t _gradeExec;
 	public :
-		Form();
-		Form(string name, size_t gradeS, size_t gradeE);
-		~Form();
+		ShrubberyCreationForm(string name, size_t gradeS, size_t gradeE);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm &);
+		ShrubberyCreationForm(ShrubberyCreationForm &);	
 		size_t getGradeSigned(void)const;
 		size_t getGradeExec(void)const;
 		string getName(void)const;
@@ -24,7 +21,9 @@ class Form
 		void increment(void);	
 		void decrement(void);	
 		void beSigned(Bureaucrat *employe);
-		void signForm(Bureaucrat *employee);
+		void signShrubberyCreationForm(Bureaucrat *employee);
+		//Pure Method
+		void execute(Bureaucrat const & executor)const;
 		class GradeTooHighException:public std::exception{
 		public:
 			const char *what() const throw();
@@ -35,4 +34,4 @@ class Form
 		};
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& b);
+std::ostream& operator<<(std::ostream& out, const ShrubberyCreationForm& b);

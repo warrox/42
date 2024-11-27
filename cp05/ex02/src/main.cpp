@@ -1,7 +1,7 @@
 #include <exception>
 #include <iostream>
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 #include "../includes/Colors.hpp"
 int main()
 {
@@ -25,7 +25,7 @@ int main()
     }
 	try
 	{
-		Form f("Contract", 70, 150);
+		AForm f("Contract", 70, 150);
 		Bureaucrat w("Bobby",70);
 		w.signForm(&f);
 		std::cout << f;
