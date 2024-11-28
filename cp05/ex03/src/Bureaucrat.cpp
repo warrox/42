@@ -23,6 +23,21 @@ Bureaucrat::~Bureaucrat()
 {	
 	// std::cout <<"Bureaucrat destroyed" << std::endl;
 }
+Bureaucrat &Bureaucrat::operator=(Bureaucrat &rhs)
+{
+	if(this != &rhs)
+	{	
+		
+	}
+	return(*this);
+}
+Bureaucrat::Bureaucrat(Bureaucrat &rhs) 
+{
+	if(this != &rhs)
+	{
+		*this = rhs;
+	}	
+}
 void Bureaucrat::increment(void)
 {
 	this->_grade++;	

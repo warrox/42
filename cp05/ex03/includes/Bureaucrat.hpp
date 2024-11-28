@@ -15,6 +15,8 @@ class Bureaucrat
 		Bureaucrat();
 		Bureaucrat(string name, size_t grade);
 		~Bureaucrat();
+		Bureaucrat(Bureaucrat &);
+		Bureaucrat & operator=(Bureaucrat &);
 		string getName(void)const;
 		size_t getGrade(void)const;
 		void increment(void);	

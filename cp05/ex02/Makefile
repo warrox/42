@@ -6,10 +6,18 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 SRC_DIR = src
 INCLUDE_DIR = includes
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/Form.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/AForm.cpp  $(SRC_DIR)/RobotomyRequestForm.cpp  $(SRC_DIR)/PresidentialPardonForm.cpp $(SRC_DIR)/ShrubberyCreationFrom.cpp
+
+ 
 
 
-INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp $(INCLUDE_DIR)/Colors.hpp $(INCLUDE_DIR)
+
+
+
+
+INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp $(INCLUDE_DIR)/Colors.hpp $(INCLUDE_DIR)/RobotomyRequestForm.hpp $(INCLUDE_DIR)/PresidentialPardonForm.hpp $(INCLUDE_DIR)/ShrubberyCreationFrom.hpp
+ 
+
 
 
 
