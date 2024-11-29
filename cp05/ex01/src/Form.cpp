@@ -3,10 +3,7 @@
 #include <iostream>
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/Form.hpp"
-// Form::Form()
-// {
-// 	// std::cout <<"Form created" << std::endl;
-// }
+
 Form::Form(string name, size_t gradeS, size_t gradeE) : _name(name), _gradeSigned(gradeS), _gradeExec(gradeE)
 {
 	// std::cout <<"Form created" << std::endl;

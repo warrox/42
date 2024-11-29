@@ -26,10 +26,10 @@ PresidentialPardonForm::~PresidentialPardonForm()
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm &rhs)
 {
 	(void)rhs;
-	// if(this != &rhs)
-	// {	
-	// 	
-	// }
+	if(this != &rhs)
+	{	
+		
+	}
 	return(*this);
 }
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &rhs) : AForm(rhs._name,rhs._gradeSigned,rhs._gradeExec) 
