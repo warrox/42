@@ -11,11 +11,6 @@ SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp
 
 INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp $(INCLUDE_DIR)/Colors.hpp
 
-
-
-
-
-
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

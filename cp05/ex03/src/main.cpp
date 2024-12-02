@@ -12,8 +12,13 @@
 int main(void){
 	Intern a;
 	AForm* form;
-	Bureaucrat b("Tom", 1);
 
-	form = a.MakeForm("robotomy request", "Blender");
-	form->execute(b);
+	try {
+		Bureaucrat b("Tom", -1);
+		form = a.MakeForm("robotomy request", "Blender");
+		form->execute(b);
+	}
+    catch(std::exception & e) {
+		std::cout << "catch error" << std::endl;
+	}
 }

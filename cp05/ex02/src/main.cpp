@@ -29,8 +29,13 @@ int main()
 	try
 	{
 		PresidentialPardonForm president("Brahim");
+		RobotomyRequestForm robotomy("Alessio");
+		ShrubberyCreationForm shrub("random");
+
 		Bureaucrat w("Bobby", 1);
 		w.executeForm(president);
+		w.executeForm(robotomy);
+		w.executeForm(shrub);
 		// RobotomyRequestForm f("Contract");
 		// RobotomyRequestForm AllesioLeBot("Pti'crack");
 		// ShrubberyCreationForm tree("arbre");

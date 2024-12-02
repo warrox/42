@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:53:49 by whamdi            #+#    #+#             */
-/*   Updated: 2024/11/28 16:18:12 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/12/02 11:42:33 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ class Intern
 		Intern &operator=(Intern &);
 		AForm *MakeForm(const string & form_name, const string & form_target);
 };
-
-
-
 
 #endif

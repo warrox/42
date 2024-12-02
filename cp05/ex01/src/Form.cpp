@@ -28,11 +28,11 @@ size_t Form::getGradeSigned(void)const
 {
 	return(this->_gradeSigned);
 }
+
 size_t Form::getGradeExec(void)const
 {
 	return(this->_gradeExec);
 }
-
 
 const char *Form::GradeTooHighException::what() const throw()
 {
@@ -47,6 +47,7 @@ bool    Form::getIsSigned(void)const
 {
 	return(this->_signed);
 }
+
 std::ostream& operator<<(std::ostream& out, const Form& b) {
     out << BLUE << b.getName() << ", form grade " << b.getGradeSigned() << "." << RESET << std::endl;
     return out;
@@ -56,15 +57,13 @@ void Form::beSigned(Bureaucrat *employee)
 {
 	if(employee->getGrade() <= this->getGradeSigned())
 	{
-		this->_signed = true;
-		
+		this->_signed = true;	
 	}
 	else
 	{
 		throw (GradeTooLowException());
 	}
 }
-
 
 string Form::getName(void)const
 {

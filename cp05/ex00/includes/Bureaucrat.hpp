@@ -8,7 +8,7 @@ typedef  std::string string;
 class Bureaucrat
 {
 	private:
-		string _name;
+		string const _name;
 		size_t _grade;
 	public :
 		Bureaucrat();

@@ -25,15 +25,15 @@ Bureaucrat::~Bureaucrat()
 }
 void Bureaucrat::increment(void)
 {
-	this->_grade++;	
-	if(this->_grade > 150)
-		throw(GradeTooLowException());
-}	
-void Bureaucrat::decrement(void)
-{
 	this->_grade--;	
 	if(this->_grade < 1)
 		throw(GradeTooHighException());
+}	
+void Bureaucrat::decrement(void)
+{
+	this->_grade++;	
+	if(this->_grade > 150)
+		throw(GradeTooLowException());
 }
 string Bureaucrat::getName(void)const
 {

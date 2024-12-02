@@ -5,6 +5,7 @@ Bureaucrat::Bureaucrat()
 {
 	// std::cout <<"Bureaucrat created" << std::endl;
 }
+
 Bureaucrat::Bureaucrat(string name, size_t grade) : _name(name), _grade(grade)
 {
 	// std::cout <<"Bureaucrat created" << std::endl;
@@ -23,6 +24,7 @@ Bureaucrat::~Bureaucrat()
 {	
 	// std::cout <<"Bureaucrat destroyed" << std::endl;
 }
+
 void Bureaucrat::increment(void)
 {
 	this->_grade++;	
@@ -35,15 +37,16 @@ void Bureaucrat::decrement(void)
 	if(this->_grade < 1)
 		throw(GradeTooHighException());
 }
+
 string Bureaucrat::getName(void)const
 {
 	return(this->_name);
 }
+
 size_t Bureaucrat::getGrade(void)const
 {
 	return(this->_grade);
 }
-
 
 const char *GradeTooHighException::what() const throw()
 {
@@ -58,6 +61,7 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b) {
     out << BLUE << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << RESET << std::endl;
     return out;
 }
+
 void Bureaucrat::signForm(Form *form)
 {
 	try

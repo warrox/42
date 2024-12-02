@@ -24,7 +24,6 @@ class Form
 		void increment(void);	
 		void decrement(void);	
 		void beSigned(Bureaucrat *employe);
-		void signForm(Bureaucrat *employee);
 		class GradeTooHighException:public std::exception{
 		public:
 			const char *what() const throw();
