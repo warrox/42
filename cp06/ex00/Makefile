@@ -1,4 +1,4 @@
-NAME = FORM
+NAME = ScalarConverter
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
@@ -6,10 +6,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 SRC_DIR = src
 INCLUDE_DIR = includes
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Bureaucrat.cpp $(SRC_DIR)/Form.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/ScalarConverter.cpp
 
 
-INCLUDES = $(INCLUDE_DIR)/Bureaucrat.hpp $(INCLUDE_DIR)/Colors.hpp $(INCLUDE_DIR)
+INCLUDES = $(INCLUDE_DIR)/ScalarConverter.hpp
 
 
 
