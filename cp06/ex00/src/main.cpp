@@ -1,11 +1,14 @@
 
 
+#include <iostream>
 #include "../includes/ScalarConverter.hpp"
+
 int main() {
-    ScalarConverter::convert("0");
-    // ScalarConverter::convert("a");
-    // ScalarConverter::convert("4.2f");
-    // ScalarConverter::convert("-inff");
-    // ScalarConverter::convert("nan");
+    std::string input;
+    std::cout << "Enter a value to convert: ";
+    std::getline(std::cin, input); // Read user input (supports spaces, etc.)
+    
+    ScalarConverter::convert(input); // Pass user input to the converter
+
     return 0;
 }

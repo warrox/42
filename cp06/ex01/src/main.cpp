@@ -1,8 +1,20 @@
+
 #include <iostream>
+#include <string>
 #include "../includes/Serializer.hpp"
 
 int main() {
-    Data originalData = {42, "Example Data", 3.14f};
+    Data originalData;
+
+    std::cout << "Enter ID (integer): ";
+    std::cin >> originalData.id;
+
+    std::cin.ignore();
+    std::cout << "Enter Name (string): ";
+    std::getline(std::cin, originalData.name);
+
+    std::cout << "Enter Value (float): ";
+    std::cin >> originalData.value;
 
     uintptr_t serializedData = Serializer::serialize(&originalData);
     std::cout << "Serialized Data: " << serializedData << std::endl;

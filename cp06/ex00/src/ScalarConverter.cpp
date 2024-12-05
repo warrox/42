@@ -1,10 +1,10 @@
 #include "../includes/ScalarConverter.hpp"
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 #include <limits>
 #include <cmath>
 
-// Constructeurs et destructeurs (privés et vides pour empêcher l'instanciation)
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::~ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter&) {}
@@ -16,7 +16,6 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
-    // Conversion en char
     if (literal.length() == 1 && !std::isdigit(literal[0])) {
         char c = literal[0];
         printChar(c);
@@ -26,7 +25,6 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
-    // Vérification des pseudo-littéraux
     if (literal == "-inff" || literal == "+inff" || literal == "nanf") {
         printPseudoLiteral(literal);
         return;
@@ -37,21 +35,18 @@ void ScalarConverter::convert(const std::string& literal) {
 
     char* end = NULL;
 
-    // Conversion en double (pour la base de toutes les conversions)
     double dValue = std::strtod(literal.c_str(), &end);
     if (*end != '\0' && *end != 'f') {
         std::cerr << "Error: Invalid literal." << std::endl;
         return;
     }
 
-    // Gestion de float
     bool isFloat = (*end == 'f');
     if (isFloat && end[1] != '\0') {
         std::cerr << "Error: Invalid float literal." << std::endl;
         return;
     }
 
-    // Affichage des conversions
     printChar(static_cast<char>(dValue));
     printInt(static_cast<int>(dValue));
     printFloat(static_cast<float>(dValue));
@@ -74,8 +69,9 @@ void ScalarConverter::printInt(int value) {
     }
 }
 
+
 void ScalarConverter::printFloat(float value) {
-    std::cout << "float: " << value << "f" << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << value << "f" << std::endl;
 }
 
 void ScalarConverter::printDouble(double value) {

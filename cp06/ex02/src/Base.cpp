@@ -1,6 +1,5 @@
 #include "../includes/Base.hpp"
 
-// Function to randomly generate an instance of A, B, or C
 Base* generate(void) {
     std::srand(std::time(0));
 
@@ -15,7 +14,6 @@ Base* generate(void) {
     }
 }
 
-// Function to identify the type of the object pointed to by p (using pointer)
 void identify(Base* p) {
     if (dynamic_cast<A*>(p)) {
         std::cout << "A" << std::endl;
@@ -26,9 +24,29 @@ void identify(Base* p) {
     }
 }
 
-// Function to identify the type of the object referenced by p (using reference)
-void identify(Base& p) {
-    // We can only use dynamic_cast for pointers in C++98, so we will use the pointer-based approach
-    Base* pPtr = &p;
-    identify(pPtr);
+void identify(Base& p)
+{
+    try {
+       (void) dynamic_cast<A&>(p) ;
+        std::cout << "it is A";
+    }
+    catch (std::exception &e)
+    {
+        try {
+           (void) dynamic_cast<B&> (p);
+             std::cout << "it is B";
+        }
+        catch (std::exception &e)
+    {
+        try {
+            (void) dynamic_cast<C&> (p);
+             std::cout << "it is C";
+        }
+        catch (std::exception &e)
+        {
+
+            std::cout << e.what() << std::endl;
+        }
+    }
+}
 }
