@@ -14,7 +14,7 @@ int main(void){
 	AForm* form;
 
 	try {
-		Bureaucrat b("Tom", -1);
+		Bureaucrat b("Tom", 1);
 		form = a.MakeForm("robotomy request", "Blender");
 		form->execute(b);
 	}
