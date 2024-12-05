@@ -16,8 +16,8 @@ public:
     static void convert(const std::string& literal);
 
 private:
-    static void printChar(char value);
-    static void printInt(int value);
+    static void printChar(double value);
+    static void printInt(double value);
     static void printFloat(float value);
     static void printDouble(double value);
     static void printPseudoLiteral(const std::string& pseudoLiteral);

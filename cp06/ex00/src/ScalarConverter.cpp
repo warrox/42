@@ -47,28 +47,32 @@ void ScalarConverter::convert(const std::string& literal) {
         return;
     }
 
-    printChar(static_cast<char>(dValue));
-    printInt(static_cast<int>(dValue));
+    printChar(static_cast<double>(dValue));
+    printInt(static_cast<double>(dValue));
     printFloat(static_cast<float>(dValue));
     printDouble(dValue);
 }
 
-void ScalarConverter::printChar(char value) {
-    if (std::isprint(value)) {
-        std::cout << "char: '" << value << "'" << std::endl;
-    } else {
-        std::cout << "char: Non displayable" << std::endl;
+
+void ScalarConverter::printChar(double value) {
+	if(value < 0 || value > 127){
+		std::cout << "char: Impossible" << std::endl;
+	}
+	else if (value < 32 || value == 127) {
+			std::cout << "char: non displayable" << std::endl;
+		} 
+	else {
+        std::cout << "char: '" << static_cast<char>(value )<< "'" << std::endl;
     }
 }
 
-void ScalarConverter::printInt(int value) {
+void ScalarConverter::printInt(double value) {
     if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min()) {
         std::cout << "int: Overflow" << std::endl;
     } else {
         std::cout << "int: " << value << std::endl;
     }
 }
-
 
 void ScalarConverter::printFloat(float value) {
     std::cout << "float: " << std::fixed << std::setprecision(1) << value << "f" << std::endl;
@@ -96,3 +100,6 @@ void ScalarConverter::printPseudoLiteral(const std::string& pseudoLiteral) {
         std::cout << "double: nan" << std::endl;
     }
 }
+
+
+
