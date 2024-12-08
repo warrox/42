@@ -1,56 +1,41 @@
+
 #include <iostream>
+#include "../includes/iter.hpp"
 
-template <class T> void swap(T &x, T &y)
-{
-	T tmp;
-	tmp = x;
-	x = y;
-	y = tmp;
-}
-template <class T> T min(T x, T y)
-{
-	if(x < y)
-	{
-		return(x);
-	}
-	else if(x == y)
-	{
-		return(y);
-	}
-	else
-	{
-		return(y);
-	}
-}
-template <class T> T max(T x, T y)
-{
-	if(x > y)
-	{
-		return(x);
-	}
-	else if(x == y)
-	{
-		return(y);
-	}
-	else
-	{
-		return(y);
-	}
+void increment(int& n) {
+    n++;
 }
 
-int main( void ) 
-{
-	int a = 2;
-	int b = 3;
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-	return 0;
+void printString(std::string& str) {
+    std::cout << str << " ";
 }
+
+void printInt(int& n) {
+    std::cout << n << " ";
+}
+
+int main() {
+    int intArray[] = {1, 2, 3, 4, 5};
+    size_t intArraySize = sizeof(intArray) / sizeof(intArray[0]);
+
+    std::cout << "Original int array: ";
+    iter(intArray, intArraySize, printInt);
+    std::cout << std::endl;
+
+    std::cout << "Incrementing int array..." << std::endl;
+    iter(intArray, intArraySize, increment);
+
+    std::cout << "Modified int array: ";
+    iter(intArray, intArraySize, printInt);
+    std::cout << std::endl;
+
+    std::string strArray[] = {"Hello", "world", "template", "iter"};
+    size_t strArraySize = sizeof(strArray) / sizeof(strArray[0]);
+
+    std::cout << "String array: ";
+    iter(strArray, strArraySize, printString);
+    std::cout << std::endl;
+
+    return 0;
+}
+
