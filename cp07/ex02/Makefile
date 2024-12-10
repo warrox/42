@@ -1,4 +1,4 @@
-NAME = iter
+NAME = Array
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
@@ -9,7 +9,7 @@ INCLUDE_DIR = includes
 SRC = $(SRC_DIR)/main.cpp
 
 
-INCLUDES = $(INCLUDE_DIR)/iter.hpp
+INCLUDES = $(INCLUDE_DIR)/Array.hpp
 
 
 

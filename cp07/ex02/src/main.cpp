@@ -1,41 +1,39 @@
-
+#include "../includes/Array.hpp"
 #include <iostream>
-#include "../includes/iter.hpp"
-
-void increment(int& n) {
-    n++;
-}
-
-void printString(std::string& str) {
-    std::cout << str << " ";
-}
-
-void printInt(int& n) {
-    std::cout << n << " ";
-}
-
 int main() {
-    int intArray[] = {1, 2, 3, 4, 5};
-    size_t intArraySize = sizeof(intArray) / sizeof(intArray[0]);
+    try {
+        Array<int> a;
+        std::cout << "Size of a: " << a.size() << std::endl;
 
-    std::cout << "Original int array: ";
-    iter(intArray, intArraySize, printInt);
-    std::cout << std::endl;
+        Array<int> b(5);
+        std::cout << "Size of b: " << b.size() << std::endl;
 
-    std::cout << "Incrementing int array..." << std::endl;
-    iter(intArray, intArraySize, increment);
+        b[0] = 42;
+        std::cout << "b[0]: " << b[0] << std::endl;
 
-    std::cout << "Modified int array: ";
-    iter(intArray, intArraySize, printInt);
-    std::cout << std::endl;
+        try {
+            b[10] = 24;
+        } catch (const std::exception& e) {
+            std::cerr << e.what() << std::endl;
+        }
 
-    std::string strArray[] = {"Hello", "world", "template", "iter"};
-    size_t strArraySize = sizeof(strArray) / sizeof(strArray[0]);
+        Array<int> c(b);
+        c[0] = 99;
+        std::cout << "b[0]: " << b[0] << " (should be 42)" << std::endl;
+        std::cout << "c[0]: " << c[0] << " (should be 99)" << std::endl;
 
-    std::cout << "String array: ";
-    iter(strArray, strArraySize, printString);
-    std::cout << std::endl;
+    
+        Array<int> d = b;
+        d[0] = 77;
+        std::cout << "b[0]: " << b[0] << " (should still be 42)" << std::endl;
+        std::cout << "d[0]: " << d[0] << " (should be 77)" << std::endl;
+
+    
+        std::cout << "Size of d: " << d.size() << std::endl;
+
+    } catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
 
     return 0;
 }
-
