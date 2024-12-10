@@ -1,39 +1,53 @@
-#include "../includes/Array.hpp"
 #include <iostream>
-int main() {
-    try {
-        Array<int> a;
-        std::cout << "Size of a: " << a.size() << std::endl;
+#include <../includes/Array.hpp>
 
-        Array<int> b(5);
-        std::cout << "Size of b: " << b.size() << std::endl;
-
-        b[0] = 42;
-        std::cout << "b[0]: " << b[0] << std::endl;
-
-        try {
-            b[10] = 24;
-        } catch (const std::exception& e) {
-            std::cerr << e.what() << std::endl;
-        }
-
-        Array<int> c(b);
-        c[0] = 99;
-        std::cout << "b[0]: " << b[0] << " (should be 42)" << std::endl;
-        std::cout << "c[0]: " << c[0] << " (should be 99)" << std::endl;
-
-    
-        Array<int> d = b;
-        d[0] = 77;
-        std::cout << "b[0]: " << b[0] << " (should still be 42)" << std::endl;
-        std::cout << "d[0]: " << d[0] << " (should be 77)" << std::endl;
-
-    
-        std::cout << "Size of d: " << d.size() << std::endl;
-
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+#define MAX_VAL 750
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
     }
 
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
     return 0;
 }
