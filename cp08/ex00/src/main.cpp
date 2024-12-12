@@ -1,11 +1,9 @@
-
-
 #include "../includes/easyfind.hpp"
 #include <vector>
 #include <iostream>
 
-int main() {
-    // Create and populate a vector
+int main() 
+{
     std::vector<int> v1(20);
     for (int i = 0; i < 20; ++i) {
         v1[i] = i;
